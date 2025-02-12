@@ -1,0 +1,72 @@
+﻿        Title="Joystic to keyboard and mouse" Icon="Img/game controller icon.ico" Height="450" Width="800" Background="{StaticResource Background}"
+        WindowStartupLocation="CenterScreen" ResizeMode="CanMinimize" WindowStyle="None">
+
+
+    <Grid>
+        <!--#region definicionew-->
+        <Grid.RowDefinitions>
+            <RowDefinition Height="31"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <!--#endregion-->
+        
+        <!--#region controles de usuario-->
+        <Views:Window x:Name="CDU_Window" Grid.Row="1"/>
+        <!--#endregion-->
+        
+        <!--#region Parte De arriba-->
+        <Grid Visibility="Visible">
+            <!--#region definiciones-->
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition Width="45"/>
+                <ColumnDefinition Width="45"/>
+                <!--<ColumnDefinition Width="7"/>-->
+            </Grid.ColumnDefinitions>
+            <!--#endregion-->
+            
+            <!-- #region Titulo-->
+            <!--Sin imagen-->
+            <!--<Label x:Name="Titulo" VerticalAlignment="Center"
+                   Grid.Column="0" Grid.Row="0"
+                   Height="30" Padding="15,5,0,0"
+                   Foreground="White"
+                   FontFamily="sans serif" FontWeight="Normal" FontSize="14"
+                   Content="Joystic to keyboard and mouse" MouseDown="MoveWindow"/>-->
+
+
+            <!--Con imagen-->
+            <Label VerticalAlignment="Center"
+                   Grid.Column="0" Grid.Row="0"
+                   Height="30" Padding="35,8.5,0,0"
+                   Foreground="White"
+                   FontFamily="sans serif" FontWeight="Normal" FontSize="12"
+                   Content="Joystic to keyboard and mouse" MouseDown="MoveWindow"/>
+            <Image Source="Img/game controller icon.ico" HorizontalAlignment="Left" VerticalAlignment="Center"
+                   Height="15" Margin="8,0,0,0"/>
+            <!--#endregion-->
+            
+            <!-- #region Botones minimizar y cerrar-->
+            <Button x:Name="b_minimizar" Content="-" Padding="0,0,1000,0"
+                    Grid.Column="1" Grid.Row="0"
+                    Foreground="White"
+                    FontSize="30" FontWeight="UltraLight" Style="{StaticResource ButtonTopStyle-}" Tag="{StaticResource Background}" BorderBrush="{StaticResource NormalColorNormal}"
+                    Width="45" Height="31"
+                    Cursor="Hand" BorderThickness="0" Click="b_minimizar_Click"/>
+
+            <Button x:Name="b_cerrar" Content="x"
+                    Grid.Column="2" Grid.Row="0"
+                    FontSize="22" FontWeight="UltraLight" Style="{StaticResource ButtonTopStyleX}" Tag="{StaticResource Background}" BorderBrush="{StaticResource EliminarColorNormal}"
+                    Foreground="White"
+                    Width="45" Height="31"
+                    Cursor="Hand" BorderThickness="0" Click="b_cerrar_Click"/>
+
+            <Border Margin="0,30.1,0,0"
+                    Grid.ColumnSpan="4" Grid.RowSpan="2"
+                    BorderThickness=".5" BorderBrush="DimGray"/>
+            <!--#endregion-->
+        </Grid>
+        
+        <Border Grid.RowSpan="2" BorderThickness=".5" BorderBrush="DimGray"/>
+        <!--#endregion-->
+    </Grid>
