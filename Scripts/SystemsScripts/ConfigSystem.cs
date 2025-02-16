@@ -1,12 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Rain_save_manager.Scripts.ConfigObj;
 
 namespace Rain_save_manager.Scripts.SystemsScripts
 {
-    internal class ConfigSystem
+    public static class ConfigSystem
     {
+        public static T ReadConfigFile<T>() where T : ConfigBehaviour => FilesSystem.ReadFile<T>(FilesSystem.RSMD.Config);
+
+        public static void WriteConfigFile(string file, object content) => FilesSystem.WriteFile(FilesSystem.RSMD.Config, file, content);
     }
 }

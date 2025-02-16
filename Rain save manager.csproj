@@ -35,12 +35,12 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup>
-    <StartupObject />
+    <StartupObject>Rain_save_manager.App</StartupObject>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="FortiCryptBC, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>.\FortiCryptBC.dll</HintPath>
+      <HintPath>dll\FortiCryptBC.dll</HintPath>
     </Reference>
     <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>packages\Newtonsoft.Json.13.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
@@ -65,9 +65,12 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Scripts\ConfigObj\ConfigPrueba.cs" />
+    <Compile Include="Scripts\ConfigObj\ConfigBehaviour.cs" />
+    <Compile Include="Scripts\ConfigObj\SaveData.cs" />
+    <Compile Include="Scripts\ConfigObj\SavesData.cs" />
     <Compile Include="Scripts\SystemsScripts\ConfigSystem.cs" />
     <Compile Include="Scripts\SystemsScripts\FilesSystem.cs" />
+    <Compile Include="Scripts\SystemsScripts\LoadData.cs" />
     <Compile Include="Scripts\SystemsScripts\SavesSystem.cs" />
     <Compile Include="Views\Window.xaml.cs">
       <DependentUpon>Window.xaml</DependentUpon>
@@ -87,6 +90,10 @@
     <Page Include="Styles\ButtonStyles.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Styles\OtherStyles.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Styles\SColors.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -115,6 +122,7 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <None Include=".editorconfig" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -125,12 +133,22 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Img\game controller icon.ico" />
     <Resource Include="Template new window.txt" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="FortiCryptBC.dll" />
+    <Content Include="dll\FortiCryptBC.dll" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.8">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4.8 %28x86 y x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -1,0 +1,45 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>FortiCryptBC</name>
+    </assembly>
+    <members>
+        <member name="T:FortiCrypts.AES256">
+            <summary>
+            AES (Advanced Encryption Standard) es un algoritmo de cifrado simétrico que usa la misma clave tanto para cifrar como para descifrar. 
+            Opera sobre bloques de datos, típicamente de 128 bits, y los transforma de una manera que solo puede ser revertida con la misma clave.
+            </summary>
+        </member>
+        <member name="T:FortiCrypts.AES128">
+            <summary>
+            AES (Advanced Encryption Standard) es un algoritmo de cifrado simétrico que usa la misma clave tanto para cifrar como para descifrar. 
+            Opera sobre bloques de datos, típicamente de 128 bits, y los transforma de una manera que solo puede ser revertida con la misma clave.
+            </summary>
+        </member>
+        <member name="T:FortiCrypts.RSA">
+            <summary>
+            RSA (Rivest-Shamir-Adleman) es un algoritmo de cifrado asimétrico que usa dos claves: una clave pública para cifrar y una clave privada para descifrar. 
+            Se utiliza ampliamente para comunicaciones seguras, como en las firmas digitales.
+            </summary>
+        </member>
+        <member name="T:FortiCrypts.XOR">
+            <summary>
+            XOR (Exclusive OR) es una operación lógica básica que compara dos bits. 
+            Si ambos bits son iguales (ambos 0 o ambos 1), el resultado es 0; si son diferentes, el resultado es 1. 
+            Se utiliza en criptografía porque puede combinarse con una clave para transformar los datos, y aplicando XOR nuevamente con la misma clave se recuperan los datos originales.
+            </summary>
+        </member>
+        <member name="T:FortiCrypts.HMAC">
+            <summary>
+            HMAC (Hash-based Message Authentication Code) combina un hash criptográfico con una clave secreta para asegurar la integridad y autenticidad del mensaje. 
+            Se utiliza comúnmente para verificar la integridad y autenticidad de los mensajes en sistemas de comunicación.
+            </summary>
+        </member>
+        <member name="T:FortiCrypts.CryptoUtils">
+            <summary>
+            Contiene utilidades criptográficas como generación de bytes aleatorios y derivación de claves 
+            mediante PBKDF2. Facilita la implementación segura de otros algoritmos de cifrado.
+            </summary>
+        </member>
+    </members>
+</doc>
