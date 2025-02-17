@@ -65,6 +65,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Scripts\ConfigObj\Enums.cs" />
     <Compile Include="Scripts\ConfigObj\ConfigBehaviour.cs" />
     <Compile Include="Scripts\ConfigObj\SaveData.cs" />
     <Compile Include="Scripts\ConfigObj\SavesData.cs" />
@@ -150,5 +151,6 @@
       <Install>false</Install>
     </BootstrapperPackage>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

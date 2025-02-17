@@ -1,6 +1,6 @@
 ﻿namespace Rain_save_manager.Scripts.ConfigObj
 {
-    public class SaveData : ConfigBehaviour
+    public class SaveData
     {
         public string saveName;
         public int saveId;

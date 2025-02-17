@@ -11,6 +11,7 @@ namespace Rain_save_manager
         public MainWindow()
         {
             InitializeComponent();
+            borde.Visibility = Visibility.Visible;
         }
 
         private void MoveWindow(object sender, MouseButtonEventArgs e)
