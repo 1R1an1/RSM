@@ -4,9 +4,9 @@ using Newtonsoft.Json;
 #if DEBUG
 using System;
 #endif
-using Rain_save_manager.Scripts.ConfigObj;
+using Rain_save_manager.Model;
 
-namespace Rain_save_manager.Scripts.SystemsScripts
+namespace Rain_save_manager.Core
 {
     public static class FilesSystem
     {
@@ -16,7 +16,7 @@ namespace Rain_save_manager.Scripts.SystemsScripts
         {
             string filepath = Path.Combine(App.appRSM, directory.ToString(), $"{typeof(T).Name}.rsm");
             string text = File.ReadAllText(filepath);
-            string textDecrypted = AES128.Decrypt(text, CryptoUtils.defaultPassword);
+            string textDecrypted = AES256.Decrypt(text, CryptoUtils.defaultPassword);
             #if DEBUG
                 Console.WriteLine(textDecrypted);
             #endif
@@ -45,7 +45,7 @@ namespace Rain_save_manager.Scripts.SystemsScripts
             #if DEBUG
                 Console.WriteLine(json);
             #endif
-            string jsonEncrypted = AES128.Encrypt(json, CryptoUtils.defaultPassword);
+            string jsonEncrypted = AES256.Encrypt(json, CryptoUtils.defaultPassword);
 
             File.WriteAllText(filepath, jsonEncrypted);
 #if DEBUG

@@ -1,6 +1,6 @@
-﻿using Rain_save_manager.Scripts.ConfigObj;
+﻿using Rain_save_manager.Model;
 
-namespace Rain_save_manager.Scripts.SystemsScripts
+namespace Rain_save_manager.Core
 {
     public static class ConfigSystem
     {

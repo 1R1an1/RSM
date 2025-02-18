@@ -1,4 +1,5 @@
-﻿using Rain_save_manager.Scripts.SystemsScripts;
+﻿using FortiCrypts;
+using Rain_save_manager.Core;
 using System;
 using System.IO;
 using System.Windows;
@@ -19,7 +20,8 @@ namespace Rain_save_manager
         {
             if (!Directory.Exists(appconfig)) Directory.CreateDirectory(appconfig);
             if (!Directory.Exists(appsaves)) Directory.CreateDirectory(appsaves);
-            
+
+            CryptoUtils.iterations = 50000;
 
             LoadData.Start();
             window = new MainWindow();

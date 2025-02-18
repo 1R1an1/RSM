@@ -65,16 +65,27 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Scripts\ConfigObj\Enums.cs" />
-    <Compile Include="Scripts\ConfigObj\ConfigBehaviour.cs" />
-    <Compile Include="Scripts\ConfigObj\SaveData.cs" />
-    <Compile Include="Scripts\ConfigObj\SavesData.cs" />
-    <Compile Include="Scripts\SystemsScripts\ConfigSystem.cs" />
-    <Compile Include="Scripts\SystemsScripts\FilesSystem.cs" />
-    <Compile Include="Scripts\SystemsScripts\LoadData.cs" />
-    <Compile Include="Scripts\SystemsScripts\SavesSystem.cs" />
+    <Compile Include="Model\Enums.cs" />
+    <Compile Include="Model\ConfigBehaviour.cs" />
+    <Compile Include="Model\SaveData.cs" />
+    <Compile Include="Model\SavesData.cs" />
+    <Compile Include="Core\ConfigSystem.cs" />
+    <Compile Include="Core\FilesSystem.cs" />
+    <Compile Include="Core\LoadData.cs" />
+    <Compile Include="Core\SavesSystem.cs" />
+    <Compile Include="Views\RenameSaves.xaml.cs">
+      <DependentUpon>RenameSaves.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Views\ReplaceSave.xaml.cs">
+      <DependentUpon>ReplaceSave.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\Window.xaml.cs">
       <DependentUpon>Window.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\OtherWindows.xaml.cs">
+      <DependentUpon>OtherWindows.xaml</DependentUpon>
+      <SubType>Code</SubType>
     </Compile>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -100,9 +111,21 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="Views\RenameSaves.xaml">
+      <SubType>Designer</SubType>
+      <Generator>XamlIntelliSenseFileGenerator</Generator>
+    </Page>
+    <Page Include="Views\ReplaceSave.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\Window.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Windows\OtherWindows.xaml">
+      <SubType>Designer</SubType>
+      <Generator>XamlIntelliSenseFileGenerator</Generator>
     </Page>
   </ItemGroup>
   <ItemGroup>

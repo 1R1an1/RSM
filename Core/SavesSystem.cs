@@ -1,6 +1,6 @@
 ﻿using System.IO;
 
-namespace Rain_save_manager.Scripts.SystemsScripts
+namespace Rain_save_manager.Core
 {
     public static class SavesSystem
     {

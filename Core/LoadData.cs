@@ -1,4 +1,4 @@
-﻿using Rain_save_manager.Scripts.ConfigObj;
+﻿using Rain_save_manager.Model;
 #if DEBUG
 using FortiCrypts;
 using System;
@@ -6,7 +6,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 
-namespace Rain_save_manager.Scripts.SystemsScripts
+namespace Rain_save_manager.Core
 {
     public static class LoadData
     {
@@ -15,26 +15,10 @@ namespace Rain_save_manager.Scripts.SystemsScripts
         {
             ComprobarData<SavesData>(out var result);
             savesData = result;
+            LoadDataLogic.VerifyInvalidSaves();
 
-            int exist = 0;
-            for (int i = 0; i <= savesData.Saves.Count; i++)
-            {
-                if (i >= savesData.Saves.Count)
-                    break;
-                if (exist == 0 && i != 0)
-                    i--;
-                if (!File.Exists($"{App.appsaves}sav-{savesData.Saves[i].saveId}"))
-                {
-                    savesData.Saves.Remove(savesData.Saves[i]);
-                    if (i != 0)
-                        i--;
-                }
-                else
-                    exist++;
-            }
-
-            ConfigSystem.WriteConfigFile(SavesData.fileName, savesData);
             #if DEBUG
+            ConfigSystem.WriteConfigFile(SavesData.fileName, savesData);
             Console.WriteLine(AES128.Decrypt(File.ReadAllText(Path.Combine(App.appconfig, SavesData.fileName + ".rsm")), CryptoUtils.defaultPassword));
             #endif
 
@@ -50,23 +34,44 @@ namespace Rain_save_manager.Scripts.SystemsScripts
             try { result = ConfigSystem.ReadConfigFile<T>(); }
             catch (FileNotFoundException) { result = new T(); ConfigSystem.WriteConfigFile(typeof(T).Name, result); }
         }
-
+    }
+    
+    public static class LoadDataLogic
+    {
+        public static void VerifyInvalidSaves()
+        {
+            int exist = 0;
+            for (int i = 0; i <= LoadData.savesData.Saves.Count; i++)
+            {
+                if (i >= LoadData.savesData.Saves.Count)
+                    break;
+                if (exist == 0 && i != 0)
+                    i--;
+                if (!File.Exists(Path.Combine(App.appsaves, $"sav-{LoadData.savesData.Saves[i].saveId}")))
+                {
+                    LoadData.savesData.Saves.Remove(LoadData.savesData.Saves[i]);
+                    if (i != 0)
+                        i--;
+                }
+                else
+                    exist++;
+            }
+        }
         public static SaveData FindSaveDataForId(int id)
         {
-            for (int i = 0; i < savesData.Saves.Count; i++)
+            for (int i = 0; i < LoadData.savesData.Saves.Count; i++)
             {
-                if (savesData.Saves[i].saveId == id)
-                    return savesData.Saves[i];
+                if (LoadData.savesData.Saves[i].saveId == id)
+                    return LoadData.savesData.Saves[i];
             }
 
             throw new KeyNotFoundException($"El id: '{id}' no fue encontrado en la lista.");
         }
-
         public static int FindSaveDataForIdInSaves(int id)
         {
-            for (int i = 0; i < savesData.Saves.Count; i++)
+            for (int i = 0; i < LoadData.savesData.Saves.Count; i++)
             {
-                if (savesData.Saves[i].saveId == id)
+                if (LoadData.savesData.Saves[i].saveId == id)
                     return i;
             }
 

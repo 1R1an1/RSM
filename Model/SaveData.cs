@@ -1,4 +1,4 @@
-﻿namespace Rain_save_manager.Scripts.ConfigObj
+﻿namespace Rain_save_manager.Model
 {
     public class SaveData
     {
