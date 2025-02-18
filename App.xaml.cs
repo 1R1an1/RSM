@@ -18,8 +18,15 @@ namespace Rain_save_manager
 
         protected override void OnStartup(StartupEventArgs e)
         {
-            if (!Directory.Exists(appconfig)) Directory.CreateDirectory(appconfig);
-            if (!Directory.Exists(appsaves)) Directory.CreateDirectory(appsaves);
+            Initialize();
+        }
+
+        private void Initialize()
+        {
+            if (!Directory.Exists(appconfig))
+                Directory.CreateDirectory(appconfig);
+            if (!Directory.Exists(appsaves))
+                Directory.CreateDirectory(appsaves);
 
             CryptoUtils.iterations = 50000;
 
