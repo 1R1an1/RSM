@@ -85,19 +85,35 @@
         <Setter Property="HorizontalAlignment" Value="Center"/>
         <Setter Property="VerticalContentAlignment" Value="Center"/>
         <Setter Property="HorizontalContentAlignment" Value="Center"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Label">
+                    <Border CornerRadius="5" Background="{TemplateBinding Background}">
+                        <ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                            VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                            RecognizesAccessKey="True" Margin="7" />
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+        <Style.Triggers>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter Property="Background" Value="{StaticResource NormalColorMouseOver}"/>
+            </Trigger>
+        </Style.Triggers>
     </Style>
     
-    <Style x:Key="lblCT" TargetType="{x:Type Label}" BasedOn="{StaticResource lblS}">
+    <!--<Style x:Key="lblCT" TargetType="{x:Type Label}" BasedOn="{StaticResource lblS}">
         <Setter Property="ContextMenu">
             <Setter.Value>
                 <ContextMenu Style="{StaticResource CM}">
                     <MenuItem FontSize="12" FontFamily="Consolas" Style="{StaticResource MIUP}" Header="Cambiar nombre"/>
                     <MenuItem FontSize="12" FontFamily="Consolas" Style="{StaticResource MIDOWN}" Header="Eliminar"/>
-                    <!--<MenuItem FontSize="14" FontFamily="Consolas" Style="{StaticResource MIMIDDLE}" Header="Eliminar"/>-->
+                    --><!--<MenuItem FontSize="14" FontFamily="Consolas" Style="{StaticResource MIMIDDLE}" Header="Eliminar"/>--><!--
                 </ContextMenu>
             </Setter.Value>
         </Setter>
-    </Style>
+    </Style>-->
     
     <!--// Scrollbar //-->
 
