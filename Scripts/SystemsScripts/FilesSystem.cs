@@ -28,8 +28,10 @@ namespace Rain_save_manager.Scripts.SystemsScripts
         public static void WriteFile(Enums.RSMD directory, string file, object obj)
         {
             string filepath = Path.Combine(App.appRSM, directory.ToString(), file + ".rsm");
+#if DEBUG      
             string filepath1 = Path.Combine(App.appRSM, directory.ToString(), file + "2.json");
-            
+#endif
+
             //if (!File.Exists(filepath))
             //{
             //    File.Create(filepath);
@@ -46,7 +48,9 @@ namespace Rain_save_manager.Scripts.SystemsScripts
             string jsonEncrypted = AES128.Encrypt(json, CryptoUtils.defaultPassword);
 
             File.WriteAllText(filepath, jsonEncrypted);
+#if DEBUG
             File.WriteAllText(filepath1, json);
+#endif
         }
 
         //public static string ReadFileHigh(Enums.RSMD directory, string file)
