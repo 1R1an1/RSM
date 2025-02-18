@@ -91,6 +91,8 @@
         <Setter Property="FontWeight" Value="Bold"/>
         <Setter Property="HorizontalAlignment" Value="Center"/>
         <Setter Property="VerticalAlignment" Value="Center"/>
+        <Setter Property="Tag" Value="{StaticResource NormalColorNormal}"/>
+        <Setter Property="BorderBrush" Value="{StaticResource NormalColorMouseOver}"/>
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="Button">

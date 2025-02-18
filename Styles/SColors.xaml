@@ -3,32 +3,41 @@
 
 
 
-    <!-- Border color -->
-    <Color x:Key="Point0">#000000</Color>
-    <Color x:Key="Point1">#380000</Color>
-    <Color x:Key="Point2">#ff0000</Color>
-
-    <Brush x:Key="Point0B">#000000</Brush>
-    <Brush x:Key="Point1B">#380000</Brush>
-    <Brush x:Key="Point2B">#ff0000</Brush>
-
     <!-- Button normal color -->
     <Brush x:Key="NormalColorNormal">#252423</Brush>
     <Brush x:Key="NormalColorMouseOver">#2F2D2D</Brush>
-    
+
     <!-- Button download color -->
     <Brush x:Key="DownloadColorNormal">#0081FF</Brush>
     <Brush x:Key="DownloadColorMouseOver">#0065FF</Brush>
-    
+
     <!-- Button jugar color -->
     <Brush x:Key="JugarColorNormal">#00FF1F</Brush>
     <Brush x:Key="JugarColorMouseOver">#00FF5E</Brush>
-    
+
     <!-- Button eliminar color -->
     <Brush x:Key="EliminarColorNormal">#FF0021</Brush>
     <Brush x:Key="EliminarColorMouseOver">#FF0000</Brush>
 
     <Brush x:Key="Background">#171618</Brush>
+
+    <!-- Button normal color -->
+    <Color x:Key="NormalColorNormal1">#252423</Color>
+    <Color x:Key="NormalColorMouseOver1">#2F2D2D</Color>
+
+    <!-- Button download color -->
+    <Color x:Key="DownloadColorNormal1">#0081FF</Color>
+    <Color x:Key="DownloadColorMouseOver1">#0065FF</Color>
+
+    <!-- Button jugar color -->
+    <Color x:Key="JugarColorNormal1">#00FF1F</Color>
+    <Color x:Key="JugarColorMouseOver1">#00FF5E</Color>
+
+    <!-- Button eliminar color -->
+    <Color x:Key="EliminarColorNormal1">#FF0021</Color>
+    <Color x:Key="EliminarColorMouseOver1">#FF0000</Color>
+
+    <Color x:Key="Background1">#171618</Color>
 
 
 

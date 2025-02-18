@@ -7,7 +7,7 @@
              mc:Ignorable="d" 
              d:DesignHeight="419" d:DesignWidth="325">
     <Grid>
-        <!--<Button x:Name="btn_rutaOB" Style="{StaticResource ButtonStyle}" Tag="{StaticResource NormalColorNormal}" BorderBrush="{StaticResource NormalColorMouseOver}"
+        <!--<Button x:Name="btn_rutaOB" Style="{StaticResource ButtonStyle}" 
                 Width="300" Height="50"
                 FontSize="17"
                 Content="Obtener ubicacion archivos de&#x0a;guardado rain world" Click="btn_rutaOB_Click">
@@ -15,28 +15,36 @@
 
         <StackPanel Orientation="Horizontal" Height="30" VerticalAlignment="Top" Margin="0,10,0,0" HorizontalAlignment="Center">
             <Button x:Name="btn_cpysave1"
-                    Style="{StaticResource ButtonStyle}" Tag="{StaticResource NormalColorNormal}" BorderBrush="{StaticResource NormalColorMouseOver}"
+                    Style="{StaticResource ButtonStyle}" 
                     FontFamily="Consolas" Foreground="Gray" FontSize="14"
                     Height="23" Width="95" Margin="5,0,5,0"
                     Content="Copy save 1" Click="btn_cpysave1_Click"/>
             <Button x:Name="btn_cpysave2"
-                    Style="{StaticResource ButtonStyle}" Tag="{StaticResource NormalColorNormal}" BorderBrush="{StaticResource NormalColorMouseOver}"
+                    Style="{StaticResource ButtonStyle}" 
                     FontFamily="Consolas" Foreground="Gray" FontSize="14"
                     Height="23" Width="95" Margin="5,0,5,0"
                     Content="Copy save 2" Click="btn_cpysave2_Click"/>
             <Button x:Name="btn_cpysave3"
-                    Style="{StaticResource ButtonStyle}" Tag="{StaticResource NormalColorNormal}" BorderBrush="{StaticResource NormalColorMouseOver}"
+                    Style="{StaticResource ButtonStyle}" 
                     FontFamily="Consolas" Foreground="Gray" FontSize="14"
                     Height="23" Width="95" Margin="5,0,5,0"
                     Content="Copy save 3" Click="btn_cpysave3_Click"/>
         </StackPanel>
 
-        <Button x:Name="btn_deletallsaves"
-                Style="{StaticResource ButtonStyle}" Tag="{StaticResource NormalColorNormal}" BorderBrush="{StaticResource NormalColorMouseOver}"
-                FontFamily="Consolas" Foreground="Gray" FontSize="14"
-                Height="23" Width="125" Margin="0,50,0,0"
-                VerticalAlignment="Top"
-                Content="Delet all saves" Click="btn_deletallsaves_Click"/>
+        <StackPanel Orientation="Horizontal" Margin="0, 50, 0, 0" HorizontalAlignment="Center" VerticalAlignment="Top">
+            <Button x:Name="btn_deletallsaves"
+                    Style="{StaticResource ButtonStyle}" 
+                    FontFamily="Consolas" Foreground="Gray" FontSize="14"
+                    Height="23" Width="125" Margin="5 0"
+                    Content="Delet all saves" Click="btn_deletallsaves_Click"/>
+
+            <Button x:Name="btn_opennewwindow"
+                    Style="{StaticResource ButtonStyle}" 
+                    FontFamily="Consolas" Foreground="Gray" FontSize="14"
+                    Height="23" Width="165" Margin="5 0 "
+                    Content="Abrir nueva ventana" Click="btn_opennewwindow_Click"/>
+
+        </StackPanel>
 
         <!--#region// Content StackPanel //-->
         <ScrollViewer Visibility="Visible"
