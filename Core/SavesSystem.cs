@@ -18,13 +18,13 @@ namespace Rain_save_manager.Core
         //    }
         //}
 
-        public static void CopySaveFile(string path, string filename, string destfilename, out bool Replace)
+        public static void CopySaveFile(string filename, string destfilename, out bool Replace)
         {
             try
-            { File.Copy(Path.Combine(path, filename), Path.Combine(App.appsaves, destfilename)); Replace = false; }
-            catch { Replace = true; }
+            { File.Copy(Path.Combine(App.rainworldsaves, filename), Path.Combine(App.appsaves, destfilename)); Replace = false; }
+            catch (IOException) { Replace = true; }
         }
 
-        public static void CopySaveFile(string path, string filename, string destfilename, bool replace) { if (replace) File.Copy(Path.Combine(path, filename), Path.Combine(App.appsaves, destfilename), replace); }
+        public static void CopySaveFile(string filename, string destfilename, bool replace) { if (replace) File.Copy(Path.Combine(App.rainworldsaves, filename), Path.Combine(App.appsaves, destfilename), replace); }
     }
 }
