@@ -65,6 +65,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Core\SavesDataLogic.cs" />
     <Compile Include="Model\Enums.cs" />
     <Compile Include="Model\ConfigBehaviour.cs" />
     <Compile Include="Model\SaveData.cs" />
