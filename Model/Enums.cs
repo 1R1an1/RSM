@@ -4,6 +4,7 @@
     {
         public enum RSMD { Config, Saves }
         public enum OWT { RenemeSaves, ReplaceSave }
+        public enum Save { Save_1, Save_2, Save_3 }
 
     }
 }

@@ -20,34 +20,6 @@ namespace Rain_save_manager.Views
         {
             lblSaves = new List<Label>();
             InitializeComponent();
-
-#if DEBUG
-            //btn_deletallsaves_Click(new object(), new RoutedEventArgs());
-            LoadData.savesData.Saves.Add(new SaveData("nombre1", 0));
-            //LoadData.savesData.Saves.Add(new SaveData("nombre2", 1));
-            //LoadData.savesData.Saves.Add(new SaveData("nombre3", 2));
-            //LoadData.savesData.Saves.Add(new SaveData("nombre4", 3));
-            //LoadData.savesData.Saves.Add(new SaveData("nombre5", 4));
-            //LoadData.savesData.Saves.Add(new SaveData("nombre6", 5));
-            //LoadData.savesData.Saves.Add(new SaveData("nombre7", 6));
-            //LoadData.savesData.Saves.Add(new SaveData("nombre8", 7));
-            //LoadData.savesData.Saves.Add(new SaveData("nombre9", 8));
-            //LoadData.savesData.Saves.Add(new SaveData("nombre10", 9));
-            //LoadData.savesData.Saves.Add(new SaveData("nombre11", 10));
-            //LoadData.savesData.Saves.Add(new SaveData("nombre12", 11));
-            //LoadData.savesData.Saves.Add(new SaveData("nombre13", 12));
-            //LoadData.savesData.Saves.Add(new SaveData("nombre14", 13));
-            //LoadData.savesData.Saves.Add(new SaveData("nombre15", 14));
-            //LoadData.savesData.Saves.Add(new SaveData("nombre16", 15));
-            //LoadData.savesData.Saves.Add(new SaveData("nombre17", 16));
-            //LoadData.savesData.Saves.Add(new SaveData("nombre18", 17));
-            //LoadData.savesData.Saves.Add(new SaveData("nombre19", 18));
-            //LoadData.savesData.Saves.Add(new SaveData("nombre20", 19));
-            //for (int i = 0; i < lblSaves.Count; i++)
-            //{
-            //    Console.WriteLine(lblSaves[i].Name.Split(char.Parse("_"))[1]);
-            //}
-#endif
             InitializeLabelsSaves();
         }
 
@@ -62,6 +34,7 @@ namespace Rain_save_manager.Views
                 SP_saves.Children.Add(lbl);
             }
         }
+        
         private Label CreateSaveLabel(SaveData save)
         {
             Label lbl = new Label()
@@ -72,15 +45,9 @@ namespace Rain_save_manager.Views
                 FontSize = 13.5,
                 ContextMenu = CreateContextMenu(save.saveId)
             };
-            lbl.MouseDoubleClick += holapepepepepepepew;
+            lbl.MouseDoubleClick += RemplazarSave_Click;
             return lbl;
         }
-
-        private void holapepepepepepepew(object sender, MouseButtonEventArgs e)
-        {
-            throw new NotImplementedException();
-        }
-
         private ContextMenu CreateContextMenu(int saveId)
         {
             ContextMenu contextMenu = new ContextMenu() { Style = (Style)FindResource("CM") };
@@ -108,6 +75,18 @@ namespace Rain_save_manager.Views
             return contextMenu;
         }
 
+
+
+
+
+        private void RemplazarSave()
+        {
+            OtherWindows renameSave = new OtherWindows(Enums.OWT.ReplaceSave);
+
+            bool? resultado = renameSave.ShowDialog();
+            if (resultado == true)
+                System.Console.WriteLine(renameSave.texto);
+        }
         private void CambiarNombreSave(int id)
         {
             OtherWindows renameSave = new OtherWindows(Enums.OWT.RenemeSaves);
@@ -117,7 +96,7 @@ namespace Rain_save_manager.Views
             {
                 Console.WriteLine(renameSave.texto);
 
-                SaveData save = LoadDataLogic.FindSaveDataForId(id);
+                SaveData save = SavesDataLogic.FindSaveDataForId(id);
                 save.saveName = renameSave.texto;
 
                 for (int i = 0; i < lblSaves.Count; i++)
@@ -132,7 +111,7 @@ namespace Rain_save_manager.Views
         }
         private void EliminarSave(int id)
         {
-            int save = LoadDataLogic.FindSaveDataForIdInSaves(id);
+            int save = SavesDataLogic.FindSaveDataForIdInSaves(id);
             LoadData.savesData.Saves.RemoveAt(save);
 
             for (int i = 0; i < lblSaves.Count; i++)
@@ -141,47 +120,48 @@ namespace Rain_save_manager.Views
                 {
                     SP_saves.Children.Remove(lblSaves[i]);
                     lblSaves.RemoveAt(i);
+                    File.Delete(Path.Combine(App.appsaves, "sav-" + id));
                     return;
                 }
             }
         }
+        private void CopiarSave(Enums.Save save)
+        {
+            OtherWindows window = new OtherWindows(Enums.OWT.RenemeSaves);
+            bool? result = window.ShowDialog();
+
+            if (result == true)
+            {
+                int maxId = SavesDataLogic.GetMaxIdInSaves();
+                int Id = maxId + 1;
+
+                SavesSystem.CopySaveFile("sav" + (save.ToString().Split(char.Parse("_"))[1] == "1" ? "" : save.ToString().Split(char.Parse("_"))[1]), $"sav-{Id}", out bool Replace);
+                if (Replace)
+                {
+                    bool resudlt = msbRemplazarArchivo();
+                    if (!resudlt)
+                        return;
+                    SavesSystem.CopySaveFile("sav" + (save.ToString().Split(char.Parse("_"))[1] == "1" ? "" : save.ToString().Split(char.Parse("_"))[1]), $"sav-{Id}", true);
+                }
+
+                LoadData.savesData.Saves.Add(new SaveData(window.texto, Id));
+                Label lbl = CreateSaveLabel(LoadData.savesData.Saves[SavesDataLogic.FindSaveDataForIdInSaves(Id)]);
+                lblSaves.Add(lbl);
+                SP_saves.Children.Add(lbl);
+                return;
+            }
+        }
+        private bool msbRemplazarArchivo() => MessageBox.Show("Replazar archivo?", "replazar", MessageBoxButton.YesNo, MessageBoxImage.Warning) == MessageBoxResult.Yes;
 
 
+        private void RemplazarSave_Click(object sender, MouseButtonEventArgs e) => RemplazarSave();
         private void CambiarNombre_Click(object sender, RoutedEventArgs e, int id) => CambiarNombreSave(id);
         private void Eliminar_Click(object sender, RoutedEventArgs e, int id) => EliminarSave(id);
 
 
-
-
-        private bool msbRemplazarArchivo() => MessageBox.Show("Replazar archivo?", "replazar", MessageBoxButton.YesNo, MessageBoxImage.Warning) == MessageBoxResult.Yes;
-
-        public void holapepe (object sender, RoutedEventArgs e)
-        {
-            MessageBox.Show("wdawdawd", "awdad");
-        }
-
-        private void btn_cpysave1_Click(object sender, RoutedEventArgs e)
-        {
-            //SavesSystem.CopySaveFile(App.rainworldsaves, "sav", out bool Replace);
-            //if (Replace)
-            //    SavesSystem.CopySaveFile(App.rainworldsaves, "sav", msb());
-
-            //ConfigSystem.WriteConfigFile("SavesConfig", new SavesConfig(1));
-        }
-        private void btn_cpysave2_Click(object sender, RoutedEventArgs e)
-        {
-            //SavesSystem.CopySaveFile(App.rainworldsaves, "sav2", out bool Replace);
-            //if (Replace)
-            //    SavesSystem.CopySaveFile(App.rainworldsaves, "sav2", msb());
-        }
-        private void btn_cpysave3_Click(object sender, RoutedEventArgs e)
-        {
-            LoadData.savesData.SavesCount++;
-            SavesSystem.CopySaveFile(App.rainworldsaves, "sav3", $"sav-3-{LoadData.savesData.SavesCount}", out bool Replace);
-            if (Replace)
-                SavesSystem.CopySaveFile(App.rainworldsaves, "sav3", $"sav-3-{LoadData.savesData.SavesCount}", msbRemplazarArchivo());
-
-        }
+        private void btn_cpysave1_Click(object sender, RoutedEventArgs e) => CopiarSave(Enums.Save.Save_1);
+        private void btn_cpysave2_Click(object sender, RoutedEventArgs e) => CopiarSave(Enums.Save.Save_2);
+        private void btn_cpysave3_Click(object sender, RoutedEventArgs e) => CopiarSave(Enums.Save.Save_3);
 
 
         private void btn_deletallsaves_Click(object sender, RoutedEventArgs e)
@@ -203,15 +183,6 @@ namespace Rain_save_manager.Views
             //    Console.WriteLine(Directory.Exists($"{Environment.GetFolderPath(Environment.SpecialFolder.UserProfile)}\\Appdata\\LocalLow\\Videocult\\Rain World"));
             //    Console.WriteLine($"{Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData)}\\..\\LocalLow\\Videocult\\Rain World");
             //}
-        }
-
-        private void btn_opennewwindow_Click(object sender, RoutedEventArgs e)
-        {
-            OtherWindows renameSave = new OtherWindows(Enums.OWT.ReplaceSave);
-
-            bool? resultado = renameSave.ShowDialog();
-            if (resultado == true)
-                System.Console.WriteLine(renameSave.texto);
         }
     }
 }
