@@ -1,4 +1,5 @@
 ﻿using Rain_save_manager.Model;
+using Rain_save_manager.Views;
 using Rain_save_manager.Windows;
 using System;
 using System.Collections.Generic;
@@ -18,7 +19,7 @@ namespace Rain_save_manager.Core
             {
                 string file = "sav-" + id;
                 string filedest = ((int)renameSave.save).ToString();
-                File.Copy(App.appsaves, Path.Combine(Path.Combine(App.appsaves, file), "sav" + (filedest == "1" ? "" : filedest)), true);
+                File.Copy(Path.Combine(App.appsaves, file), Path.Combine(App.rainworldsaves, "sav" + (filedest == "1" ? "" : filedest)), true);
             }
         }
         public void CambiarNombreSave(int id)
@@ -32,7 +33,7 @@ namespace Rain_save_manager.Core
                 Console.WriteLine(renameSave.texto);
 #endif
                 SaveData save = SavesDataLogic.FindSaveDataForId(id);
-                save.saveName = renameSave.texto;
+                save.saveName = (renameSave.texto.Trim().Length == 0 ? "partida-" + id : renameSave.texto);
             }
         }
         public void EliminarSave(int id)
@@ -59,7 +60,7 @@ namespace Rain_save_manager.Core
                     SavesSystem.CopySaveFile("sav" + (((int)save).ToString() == "1" ? "" : ((int)save).ToString()), $"sav-{Id}", true);
                 }
 
-                SaveData savee = new SaveData(window.texto, "sav-" + Id);
+                SaveData savee = new SaveData((window.texto.Trim().Length == 0 ? "partida-" + Id : window.texto), "sav-" + Id);
                 LoadData.savesData.Saves.Add(Id, savee);
                 return new KeyValuePair<int, SaveData>(Id, savee);
             }
@@ -71,7 +72,8 @@ namespace Rain_save_manager.Core
                 return;
             Directory.Delete(App.appsaves, true);
             Directory.CreateDirectory(App.appsaves);
-            LoadData.savesData = new SavesData();
+
+            LoadData.savesdata = new SavesData();
         }
         private bool msbRemplazarArchivo() => MessageBox.Show("Replazar archivo?", "replazar", MessageBoxButton.YesNo, MessageBoxImage.Warning) == MessageBoxResult.Yes;
     }

@@ -35,10 +35,23 @@ namespace Rain_save_manager.Views
             KeyValuePair<int, SaveData> respuesta = saveManager.CopiarSave(save);
             KeyValuePair<int, SaveData> a = new KeyValuePair<int, SaveData>();
 
-            if (respuesta.Key != a.Key && respuesta.Value != a.Value)
+            if (respuesta.Key != a.Key || respuesta.Value != a.Value)
                 saveManagerUI.AddLabel(new KeyValuePair<int, Label>(respuesta.Key, saveManagerUI.CreateSaveLabel(respuesta)));
         }
 
-        private void btn_deletallsaves_Click(object sender, RoutedEventArgs e) => saveManager.EliminarSaves();
+        private void btn_deletallsaves_Click(object sender, RoutedEventArgs e)
+        {
+            List<int> keysToRemove = new List<int>();
+            foreach (KeyValuePair<int, SaveData> item in LoadData.savesData.Saves)
+            {
+                keysToRemove.Add(item.Key);
+            }
+
+            for (int i = 0; i < keysToRemove.Count; i++)
+            {
+                saveManagerUI.EliminarLabel(keysToRemove[i]);
+            }
+            saveManager.EliminarSaves();
+        }
     }
 }

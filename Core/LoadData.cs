@@ -9,7 +9,9 @@ namespace Rain_save_manager.Core
 {
     public static class LoadData
     {
-        public static SavesData savesData;
+        public static SavesData savesData { get; private set; }
+        public static SavesData savesdata { private get => savesData; set { savesData = value; } }
+        //public static AppConfig appConfig;
 
         public static void Start()
         {
