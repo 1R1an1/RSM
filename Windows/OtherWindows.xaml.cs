@@ -7,29 +7,38 @@ namespace Rain_save_manager.Windows
     public partial class OtherWindows : Window
     {
         public string texto;
-        public OtherWindows(Enums.OWT Type)
+        public Enums.Save save;
+        public OtherWindows(Enums.OWT Type, string title = "")
         {
             InitializeComponent();
             if (Type == Enums.OWT.RenemeSaves)
             {
-                string titulo = "Renombrar partida";
+                string titulo = title == "" ? "Renombrar partida (RSM)" : title + " (RSM)";
                 this.Title = titulo;
                 lbl_title.Content = titulo;
                 CDU_RENS.Visibility = Visibility.Visible;
-                CDU_RENS.OnAceptar += Button_Click;
+                CDU_RENS.OnAceptar += Rename_click;
             }
             else if (Type == Enums.OWT.ReplaceSave)
             {
-                string titulo = "Remplazar partida";
+                string titulo = title == "" ? "Remplazar partida (RSM)" : title + " (RSM)";
                 this.Title = titulo;
                 lbl_title.Content = titulo;
                 CDU_REPS.Visibility = Visibility.Visible;
+                CDU_REPS.OnAceptar += CDU_REPS_OnAceptar;
             }
                 borde.Visibility = Visibility.Visible;
 
         }
 
-        private void Button_Click(object sender, System.EventArgs e)
+        private void CDU_REPS_OnAceptar(object sender, Enums.Save e)
+        {
+            save = e;
+            this.DialogResult = true;
+            this.Close();
+        }
+
+        private void Rename_click(object sender, System.EventArgs e)
         {
             texto = CDU_RENS.nombre;
             this.DialogResult = true;
@@ -49,13 +58,6 @@ namespace Rain_save_manager.Windows
         private void b_minimizar_Click(object sender, RoutedEventArgs e)
         {
             WindowState = WindowState.Minimized;
-        }
-
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-            //Dato = txtDato.Text;
-            this.DialogResult = true;
-            this.Close();
         }
     }
 }

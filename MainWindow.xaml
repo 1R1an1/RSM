@@ -19,7 +19,7 @@
         <!--#endregion-->
 
         <!-- #region controles de usuario -->
-        <Views:Window x:Name="CDU_Window" Grid.Row="1"/>
+        <Views:RSMain x:Name="CDU_Window" Grid.Row="1"/>
         <!--#endregion-->
         
         <!-- #region Parte De arriba -->

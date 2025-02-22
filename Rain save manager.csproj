@@ -65,6 +65,8 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Core\SaveManager.cs" />
+    <Compile Include="Core\SaveManagerUI.cs" />
     <Compile Include="Core\SavesDataLogic.cs" />
     <Compile Include="Model\Enums.cs" />
     <Compile Include="Model\ConfigBehaviour.cs" />
@@ -81,8 +83,8 @@
     <Compile Include="Views\ReplaceSave.xaml.cs">
       <DependentUpon>ReplaceSave.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\Window.xaml.cs">
-      <DependentUpon>Window.xaml</DependentUpon>
+    <Compile Include="Views\RSMain.xaml.cs">
+      <DependentUpon>RSMain.xaml</DependentUpon>
     </Compile>
     <Compile Include="Windows\OtherWindows.xaml.cs">
       <DependentUpon>OtherWindows.xaml</DependentUpon>
@@ -120,7 +122,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\Window.xaml">
+    <Page Include="Views\RSMain.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>

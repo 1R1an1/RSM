@@ -32,15 +32,6 @@ namespace Rain_save_manager.Core
             string filepath1 = Path.Combine(App.appRSM, directory.ToString(), file + "2.json");
 #endif
 
-            //if (!File.Exists(filepath))
-            //{
-            //    File.Create(filepath);
-            //}
-            //if (!File.Exists(filepath1))
-            //{
-            //    File.Create(filepath1);
-            //}
-
             var json = JsonConvert.SerializeObject(obj, Formatting.Indented);
             #if DEBUG
                 Console.WriteLine(json);
@@ -52,31 +43,5 @@ namespace Rain_save_manager.Core
             File.WriteAllText(filepath1, json);
 #endif
         }
-
-        //public static string ReadFileHigh(Enums.RSMD directory, string file)
-        //{
-        //    string filepath = $"{App.appRSM}\\{directory}\\{file}.rsm";
-        //    string text = File.ReadAllText(filepath);
-        //    string textDecrypted = CrypShieldProHigh.Decrypt(text);
-        //    return textDecrypted;
-        //}
-
-        //public static void WriteFileHigh(Enums.RSMD directory, string file, object obj)
-        //{
-        //    string filepath = $"{App.appRSM}\\{directory}\\{file}.rsm";
-        //    string filepath1 = $"{App.appRSM}\\{directory}\\{file}2.rsm";
-
-        //    if (!File.Exists(filepath))
-        //    {
-        //        File.Create(filepath);
-        //        File.Create(filepath1);
-        //    }
-
-        //    var json = JsonConvert.SerializeObject(obj, Formatting.Indented);
-        //    string jsonEncrypted = CrypShieldProHigh.Encrypt(json);
-
-        //    File.WriteAllText(filepath, jsonEncrypted);
-        //    File.WriteAllText(filepath1, json);
-        //}
     }
 }
