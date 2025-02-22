@@ -3,8 +3,8 @@
     public class SaveData
     {
         public string saveName;
-        public int saveId;
+        public string saveFileName;
 
-        public SaveData(string saveName, int saveId) { this.saveName = saveName; this.saveId = saveId; }
+        public SaveData(string saveName, string saveFileName) { this.saveName = saveName; this.saveFileName = saveFileName; }
     }
 }

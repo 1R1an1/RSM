@@ -4,9 +4,9 @@ namespace Rain_save_manager.Model
 {
     public class SavesData : ConfigBehaviour
     {
-        public List<SaveData> Saves = new List<SaveData>();
+        public Dictionary<int, SaveData> Saves = new Dictionary<int, SaveData>();
         
-        public SavesData(List<SaveData> Saves):base(typeof(SavesData).Name){ this.Saves = Saves; }
+        public SavesData(Dictionary<int, SaveData> Saves):base(typeof(SavesData).Name){ this.Saves = Saves; }
         public SavesData():base(typeof(SavesData).Name){ }
     }
 }
