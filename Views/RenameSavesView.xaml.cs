@@ -6,11 +6,11 @@ namespace Rain_save_manager.Views
     /// <summary>
     /// Lógica de interacción para RenameSaves.xaml
     /// </summary>
-    public partial class RenameSaves : UserControl
+    public partial class RenameSavesView : UserControl
     {
         public string nombre;
         public event EventHandler OnAceptar;
-        public RenameSaves()
+        public RenameSavesView()
         {
             InitializeComponent();
         }

@@ -5,7 +5,7 @@
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{A318BF79-6A82-49B3-B596-A986B91DDC34}</ProjectGuid>
-    <OutputType>WinExe</OutputType>
+    <OutputType>Exe</OutputType>
     <RootNamespace>Rain_save_manager</RootNamespace>
     <AssemblyName>RSM</AssemblyName>
     <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
@@ -76,15 +76,15 @@
     <Compile Include="Core\FilesSystem.cs" />
     <Compile Include="Core\LoadData.cs" />
     <Compile Include="Core\SavesSystem.cs" />
-    <Compile Include="Views\RenameSaves.xaml.cs">
-      <DependentUpon>RenameSaves.xaml</DependentUpon>
+    <Compile Include="Views\RenameSavesView.xaml.cs">
+      <DependentUpon>RenameSavesView.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Views\ReplaceSave.xaml.cs">
-      <DependentUpon>ReplaceSave.xaml</DependentUpon>
+    <Compile Include="Views\ReplaceSaveView.xaml.cs">
+      <DependentUpon>ReplaceSaveView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\RSMain.xaml.cs">
-      <DependentUpon>RSMain.xaml</DependentUpon>
+    <Compile Include="Views\MainView.xaml.cs">
+      <DependentUpon>MainView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Windows\OtherWindows.xaml.cs">
       <DependentUpon>OtherWindows.xaml</DependentUpon>
@@ -122,15 +122,15 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\RenameSaves.xaml">
+    <Page Include="Views\RenameSavesView.xaml">
       <SubType>Designer</SubType>
       <Generator>XamlIntelliSenseFileGenerator</Generator>
     </Page>
-    <Page Include="Views\ReplaceSave.xaml">
+    <Page Include="Views\ReplaceSaveView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\RSMain.xaml">
+    <Page Include="Views\MainView.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>

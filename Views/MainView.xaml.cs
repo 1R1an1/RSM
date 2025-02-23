@@ -7,11 +7,11 @@ using System.Collections.Generic;
 
 namespace Rain_save_manager.Views
 {
-    public partial class RSMain : UserControl
+    public partial class MainView : UserControl
     {
         public static SaveManager saveManager { get; private set; }
         public static SaveManagerUI saveManagerUI { get; private set; }
-        public RSMain()
+        public MainView()
         {
             InitializeComponent();
             saveManager = new SaveManager();

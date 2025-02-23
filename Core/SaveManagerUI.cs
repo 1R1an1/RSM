@@ -25,13 +25,13 @@ namespace Rain_save_manager.Core
         public void InitializeLabelsSaves()
         {
             _lblSave1.ContextMenu = CreateContextMenuSave(Enums.Save.Save_1);
-            _lblSave1.MouseDoubleClick += RSMain.btn_cpysave1_Click;
+            _lblSave1.MouseDoubleClick += MainView.btn_cpysave1_Click;
             
             _lblSave2.ContextMenu = CreateContextMenuSave(Enums.Save.Save_2);
-            _lblSave2.MouseDoubleClick += RSMain.btn_cpysave2_Click;
+            _lblSave2.MouseDoubleClick += MainView.btn_cpysave2_Click;
             
             _lblSave3.ContextMenu = CreateContextMenuSave(Enums.Save.Save_3);
-            _lblSave3.MouseDoubleClick += RSMain.btn_cpysave3_Click;
+            _lblSave3.MouseDoubleClick += MainView.btn_cpysave3_Click;
 
 
             foreach (KeyValuePair<int, SaveData> dictionary in LoadData.savesData.Saves)
@@ -53,7 +53,7 @@ namespace Rain_save_manager.Core
                 Margin = new Thickness(0,0,0,2.5),
                 ContextMenu = CreateContextMenu(save.Key)
             };
-            lbl.MouseDoubleClick += (s, e) => RSMain.RemplazarSave_Click(s, e, save.Key);
+            lbl.MouseDoubleClick += (s, e) => MainView.RemplazarSave_Click(s, e, save.Key);
             return lbl;
         }
         private ContextMenu CreateContextMenu(int saveId)
@@ -67,7 +67,7 @@ namespace Rain_save_manager.Core
                 Style = (Style)App.Current.FindResource("MIUP"),
                 Header = "Cambiar nombre"
             };
-            renameItem.Click += (s, e) => RSMain.CambiarNombre_Click(s, e, saveId);
+            renameItem.Click += (s, e) => MainView.CambiarNombre_Click(s, e, saveId);
 
             MenuItem deleteItem = new MenuItem()
             {
@@ -76,7 +76,7 @@ namespace Rain_save_manager.Core
                 Style = (Style)App.Current.FindResource("MIDOWN"),
                 Header = "Eliminar"
             };
-            deleteItem.Click += (s, e) => RSMain.Eliminar_Click(s, e, saveId);
+            deleteItem.Click += (s, e) => MainView.Eliminar_Click(s, e, saveId);
 
             contextMenu.Items.Add(renameItem);
             contextMenu.Items.Add(deleteItem);
@@ -96,11 +96,11 @@ namespace Rain_save_manager.Core
             };
 
             if (save == Enums.Save.Save_1)
-                copiSave.Click += RSMain.btn_cpysave1_Click;
+                copiSave.Click += MainView.btn_cpysave1_Click;
             else if (save == Enums.Save.Save_2)
-                copiSave.Click += RSMain.btn_cpysave2_Click;
+                copiSave.Click += MainView.btn_cpysave2_Click;
             else
-                copiSave.Click += RSMain.btn_cpysave3_Click;
+                copiSave.Click += MainView.btn_cpysave3_Click;
 
             contextMenu.Items.Add(copiSave);
             return contextMenu;

@@ -19,8 +19,8 @@
         <!--#endregion-->
 
         <!-- #region controles de usuario -->
-        <views:RenameSaves x:Name="CDU_RENS" Grid.Row="1" Visibility="Collapsed"/>
-        <views:ReplaceSave x:Name="CDU_REPS" Grid.Row="1" Visibility="Collapsed"/>
+        <views:RenameSavesView x:Name="CDU_RENS" Grid.Row="1" Visibility="Collapsed"/>
+        <views:ReplaceSaveView x:Name="CDU_REPS" Grid.Row="1" Visibility="Collapsed"/>
         <!--#endregion-->
 
         <!-- #region Parte De arriba -->

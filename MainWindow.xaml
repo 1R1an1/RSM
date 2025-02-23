@@ -20,7 +20,7 @@
         <!--#endregion-->
 
         <!-- #region controles de usuario -->
-        <Views:RSMain x:Name="CDU_Window" Grid.Row="1"/>
+        <Views:MainView x:Name="CDU_MainView" Grid.Row="1"/>
         <!--#endregion-->
         
         <!-- #region Parte De arriba -->
@@ -84,21 +84,21 @@
               VerticalAlignment="Top"
               Grid.Row="1">
 
-            <MenuItem Header="Configuracion"
-                      Style="{StaticResource MenuItem_Dropdown}"
+            <MenuItem x:Name="mi_home" Header="Inicio"
+                      Style="{StaticResource Main_MenuItem}"
                       FontWeight="Bold"
                       Height="20"
-                      Width="107">
-
-                <MenuItem Header="Habilitar MessagBox"
-                          Style="{StaticResource Main_MenuItem}"
-                          FontWeight="Bold"
-                          Height="20"
-                          Width="147"/>
-            </MenuItem>
+                      Width="60" Click="mi_home_Click"/>
+            
+            <MenuItem x:Name="mi_backup" Header="Backup"
+                      Style="{StaticResource Main_MenuItem}"
+                      FontWeight="Bold"
+                      Height="20"
+                      Width="60" Click="mi_backup_Click"/>
         </Menu>-->
 
-        <Border Grid.Row="1" BorderThickness="0,0,0,.5" BorderBrush="DimGray"/>
+        
+        <!--<Border x:Name="borde1"  Grid.Row="1" BorderThickness="0,0,0,.5" BorderBrush="DimGray" Visibility="Collapsed"/>-->
         <Border x:Name="borde" Grid.Row="0" Grid.RowSpan="3" BorderThickness=".5" BorderBrush="DimGray" Visibility="Collapsed"/>
         <!--#endregion-->
     </Grid>

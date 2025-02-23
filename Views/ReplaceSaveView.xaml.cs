@@ -7,10 +7,10 @@ namespace Rain_save_manager.Views
     /// <summary>
     /// Lógica de interacción para ReplaceSave.xaml
     /// </summary>
-    public partial class ReplaceSave : UserControl
+    public partial class ReplaceSaveView : UserControl
     {
         public event EventHandler<Enums.Save> OnAceptar;
-        public ReplaceSave()
+        public ReplaceSaveView()
         {
             InitializeComponent();
         }
