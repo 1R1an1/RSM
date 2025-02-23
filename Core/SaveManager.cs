@@ -1,6 +1,8 @@
 ﻿using Rain_save_manager.Model;
 using Rain_save_manager.Windows;
+#if DEBUG
 using System;
+#endif
 using System.Collections.Generic;
 using System.IO;
 using System.Windows;
@@ -65,14 +67,15 @@ namespace Rain_save_manager.Core
             }
             return new KeyValuePair<int, SaveData>();
         }
-        public void EliminarSaves()
+        public bool EliminarSaves()
         {
             if (MessageBox.Show("¡Cambios irreversibles! \n ¿Continuar?", "ADVERTENCIA", MessageBoxButton.YesNo, MessageBoxImage.Warning) == MessageBoxResult.No)
-                return;
+                return false;
             Directory.Delete(App.appsaves, true);
             Directory.CreateDirectory(App.appsaves);
 
             LoadData.savesdata = new SavesData();
+            return true;
         }
         private bool msbRemplazarArchivo() => MessageBox.Show("Replazar archivo?", "replazar", MessageBoxButton.YesNo, MessageBoxImage.Warning) == MessageBoxResult.Yes;
     }

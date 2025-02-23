@@ -47,11 +47,14 @@ namespace Rain_save_manager.Views
                 keysToRemove.Add(item.Key);
             }
 
-            for (int i = 0; i < keysToRemove.Count; i++)
+            if (saveManager.EliminarSaves())
             {
-                saveManagerUI.EliminarLabel(keysToRemove[i]);
+                for (int i = 0; i < keysToRemove.Count; i++)
+                {
+                    saveManagerUI.EliminarLabel(keysToRemove[i]);
+                }
             }
-            saveManager.EliminarSaves();
+
         }
     }
 }
