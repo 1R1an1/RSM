@@ -11,7 +11,7 @@ RSM todavía está en desarrollo, por lo que puede contener errores o fallos ine
 
 ## Estado del proyecto  
 🛠️ **Fase:** Beta  
-🔄 **Versión actual:** *v0.5.0*
+🔄 **Versión actual:** *v0.5.1*
 
 ## Características
 
