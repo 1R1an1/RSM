@@ -12,26 +12,28 @@ namespace Rain_save_manager.Core
         private StackPanel _SP_saves;
         private Dictionary<int, Label> _lblSaves;
         private Label _lblSave1, _lblSave2, _lblSave3;
+        private MainView _mainView;
 
-        public SaveManagerUI(StackPanel _SP_saves, Label _lblSave1, Label _lblSave2, Label _lblSave3)
+        public SaveManagerUI(StackPanel _SP_saves, Label _lblSave1, Label _lblSave2, Label _lblSave3, MainView _mainView)
         {
             this._SP_saves = _SP_saves;
             _lblSaves = new Dictionary<int, Label>();
             this._lblSave1 = _lblSave1;
             this._lblSave2 = _lblSave2;
             this._lblSave3 = _lblSave3;
+            this._mainView = _mainView;
         }
 
         public void InitializeLabelsSaves()
         {
             _lblSave1.ContextMenu = CreateContextMenuSave(Enums.Save.Save_1);
-            _lblSave1.MouseDoubleClick += MainView.btn_cpysave1_Click;
+            _lblSave1.MouseDoubleClick += _mainView.btn_cpysave1_Click;
             
             _lblSave2.ContextMenu = CreateContextMenuSave(Enums.Save.Save_2);
-            _lblSave2.MouseDoubleClick += MainView.btn_cpysave2_Click;
+            _lblSave2.MouseDoubleClick += _mainView.btn_cpysave2_Click;
             
             _lblSave3.ContextMenu = CreateContextMenuSave(Enums.Save.Save_3);
-            _lblSave3.MouseDoubleClick += MainView.btn_cpysave3_Click;
+            _lblSave3.MouseDoubleClick += _mainView.btn_cpysave3_Click;
 
 
             foreach (KeyValuePair<int, SaveData> dictionary in LoadData.savesData.Saves)
@@ -53,7 +55,7 @@ namespace Rain_save_manager.Core
                 Margin = new Thickness(0,0,0,2.5),
                 ContextMenu = CreateContextMenu(save.Key)
             };
-            lbl.MouseDoubleClick += (s, e) => MainView.RemplazarSave_Click(s, e, save.Key);
+            lbl.MouseDoubleClick += (s, e) => _mainView.RemplazarSave_Click(s, e, save.Key);
             return lbl;
         }
         private ContextMenu CreateContextMenu(int saveId)
@@ -67,7 +69,16 @@ namespace Rain_save_manager.Core
                 Style = (Style)App.Current.FindResource("MIUP"),
                 Header = "Cambiar nombre"
             };
-            renameItem.Click += (s, e) => MainView.CambiarNombre_Click(s, e, saveId);
+            renameItem.Click += (s, e) => _mainView.CambiarNombre_Click(s, e, saveId);
+
+            MenuItem UpdateItem = new MenuItem()
+            {
+                FontSize = 12,
+                FontFamily = new FontFamily("Consolas"),
+                Style = (Style)App.Current.FindResource("MIMIDDLE"),
+                Header = "Actualizar"
+            };
+            UpdateItem.Click += (s, e) => _mainView.Update_Click(s, e, saveId);
 
             MenuItem deleteItem = new MenuItem()
             {
@@ -76,9 +87,10 @@ namespace Rain_save_manager.Core
                 Style = (Style)App.Current.FindResource("MIDOWN"),
                 Header = "Eliminar"
             };
-            deleteItem.Click += (s, e) => MainView.Eliminar_Click(s, e, saveId);
+            deleteItem.Click += (s, e) => _mainView.Eliminar_Click(s, e, saveId);
 
             contextMenu.Items.Add(renameItem);
+            contextMenu.Items.Add(UpdateItem);
             contextMenu.Items.Add(deleteItem);
             return contextMenu;
         }
@@ -96,11 +108,11 @@ namespace Rain_save_manager.Core
             };
 
             if (save == Enums.Save.Save_1)
-                copiSave.Click += MainView.btn_cpysave1_Click;
+                copiSave.Click += _mainView.btn_cpysave1_Click;
             else if (save == Enums.Save.Save_2)
-                copiSave.Click += MainView.btn_cpysave2_Click;
+                copiSave.Click += _mainView.btn_cpysave2_Click;
             else
-                copiSave.Click += MainView.btn_cpysave3_Click;
+                copiSave.Click += _mainView.btn_cpysave3_Click;
 
             contextMenu.Items.Add(copiSave);
             return contextMenu;

@@ -13,19 +13,33 @@ namespace Rain_save_manager.Core
     {
         public void RemplazarSave(int id)
         {
-            OtherWindows renameSave = new OtherWindows(Enums.OWT.ReplaceSave);
+            OtherWindows replaceSave = new OtherWindows(Enums.OWT.ReplaceSave);
 
-            bool? resultado = renameSave.ShowDialog();
+            bool? resultado = replaceSave.ShowDialog();
             if (resultado == true)
             {
                 string file = "sav-" + id;
-                string filedest = ((int)renameSave.save).ToString();
+                string filedest = ((int)replaceSave.save).ToString();
                 File.Copy(Path.Combine(App.appsaves, file), Path.Combine(App.rainworldsaves, "sav" + (filedest == "1" ? "" : filedest)), true);
+            }
+        }
+        public void UpdateSave(int id)
+        {
+            OtherWindows updateSave = new OtherWindows(Enums.OWT.ReplaceSave, "Actualizar partida");
+
+            bool? resultado = updateSave.ShowDialog();
+            if (resultado == true)
+            {
+                string file = "sav-" + id;
+                string filereference = ((int)updateSave.save).ToString();
+                File.Copy(Path.Combine(App.rainworldsaves, "sav" + (filereference == "1" ? "" : filereference)), Path.Combine(App.appsaves, file), true);
+                MessageBox.Show("Archivo actualizado", "informacion", MessageBoxButton.OK, MessageBoxImage.Information);
             }
         }
         public void CambiarNombreSave(int id)
         {
             OtherWindows renameSave = new OtherWindows(Enums.OWT.RenemeSaves);
+            renameSave.CDU_RENS.txtDato.Text = LoadData.savesData.Saves[id].saveName;
 
             bool? resultado = renameSave.ShowDialog();
             if (resultado == true)
