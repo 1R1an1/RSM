@@ -15,7 +15,7 @@ namespace Rain_save_manager.Views
         {
             InitializeComponent();
             saveManager = new SaveManager();
-            saveManagerUI = new SaveManagerUI(SP_saves);
+            saveManagerUI = new SaveManagerUI(SP_saves, lblSave1, lblSave2, lblSave3);
             saveManagerUI.InitializeLabelsSaves();
 
         }
@@ -26,11 +26,11 @@ namespace Rain_save_manager.Views
         public static void Eliminar_Click(object sender, RoutedEventArgs e, int id) { saveManager.EliminarSave(id); saveManagerUI.EliminarLabel(id); }
 
 
-        private void btn_cpysave1_Click(object sender, RoutedEventArgs e) => CopySave(Enums.Save.Save_1);
-        private void btn_cpysave2_Click(object sender, RoutedEventArgs e) => CopySave(Enums.Save.Save_2);
-        private void btn_cpysave3_Click(object sender, RoutedEventArgs e) => CopySave(Enums.Save.Save_3);
+        public static void btn_cpysave1_Click(object sender, RoutedEventArgs e) => CopySave(Enums.Save.Save_1);
+        public static void btn_cpysave2_Click(object sender, RoutedEventArgs e) => CopySave(Enums.Save.Save_2);
+        public static void btn_cpysave3_Click(object sender, RoutedEventArgs e) => CopySave(Enums.Save.Save_3);
 
-        private void CopySave(Enums.Save save)
+        private static void CopySave(Enums.Save save)
         {
             KeyValuePair<int, SaveData> respuesta = saveManager.CopiarSave(save);
             KeyValuePair<int, SaveData> a = new KeyValuePair<int, SaveData>();

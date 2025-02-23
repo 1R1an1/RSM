@@ -11,22 +11,28 @@ namespace Rain_save_manager.Core
     {
         private StackPanel _SP_saves;
         private Dictionary<int, Label> _lblSaves;
+        private Label _lblSave1, _lblSave2, _lblSave3;
 
-        public SaveManagerUI(StackPanel _SP_saves)
+        public SaveManagerUI(StackPanel _SP_saves, Label _lblSave1, Label _lblSave2, Label _lblSave3)
         {
             this._SP_saves = _SP_saves;
             _lblSaves = new Dictionary<int, Label>();
+            this._lblSave1 = _lblSave1;
+            this._lblSave2 = _lblSave2;
+            this._lblSave3 = _lblSave3;
         }
 
         public void InitializeLabelsSaves()
         {
-            //for (int i = 0; i < LoadData.savesData.Saves.Count; i++)
-            //{
-            //    Label lbl = CreateSaveLabel(LoadData.savesData.Saves[i]);
+            _lblSave1.ContextMenu = CreateContextMenuSave(Enums.Save.Save_1);
+            _lblSave1.MouseDoubleClick += RSMain.btn_cpysave1_Click;
+            
+            _lblSave2.ContextMenu = CreateContextMenuSave(Enums.Save.Save_2);
+            _lblSave2.MouseDoubleClick += RSMain.btn_cpysave2_Click;
+            
+            _lblSave3.ContextMenu = CreateContextMenuSave(Enums.Save.Save_3);
+            _lblSave3.MouseDoubleClick += RSMain.btn_cpysave3_Click;
 
-            //    saveManager.lblSaves.Add(lbl);
-            //    saveManager.SP_saves.Children.Add(lbl);
-            //}
 
             foreach (KeyValuePair<int, SaveData> dictionary in LoadData.savesData.Saves)
             {
@@ -44,6 +50,7 @@ namespace Rain_save_manager.Core
                 Style = (Style)App.Current.FindResource("lblS"),
                 Content = save.Value.saveName,
                 FontSize = 13.5,
+                Margin = new Thickness(0,0,0,2.5),
                 ContextMenu = CreateContextMenu(save.Key)
             };
             lbl.MouseDoubleClick += (s, e) => RSMain.RemplazarSave_Click(s, e, save.Key);
@@ -73,6 +80,29 @@ namespace Rain_save_manager.Core
 
             contextMenu.Items.Add(renameItem);
             contextMenu.Items.Add(deleteItem);
+            return contextMenu;
+        }
+
+        private ContextMenu CreateContextMenuSave(Enums.Save save)
+        {
+            ContextMenu contextMenu = new ContextMenu() { Style = (Style)App.Current.FindResource("CM") };
+
+            MenuItem copiSave = new MenuItem()
+            {
+                FontSize = 12,
+                FontFamily = new FontFamily("Consolas"),
+                Style = (Style)App.Current.FindResource("MI"),
+                Header = "Copiar"
+            };
+
+            if (save == Enums.Save.Save_1)
+                copiSave.Click += RSMain.btn_cpysave1_Click;
+            else if (save == Enums.Save.Save_2)
+                copiSave.Click += RSMain.btn_cpysave2_Click;
+            else
+                copiSave.Click += RSMain.btn_cpysave3_Click;
+
+            contextMenu.Items.Add(copiSave);
             return contextMenu;
         }
 

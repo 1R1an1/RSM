@@ -7,13 +7,7 @@
              mc:Ignorable="d" 
              d:DesignHeight="419" d:DesignWidth="325">
     <Grid>
-        <!--<Button x:Name="btn_rutaOB" Style="{StaticResource ButtonStyle}" 
-                Width="300" Height="50"
-                FontSize="17"
-                Content="Obtener ubicacion archivos de&#x0a;guardado rain world" Click="btn_rutaOB_Click">
-        </Button>-->
-
-        <StackPanel Orientation="Horizontal" Height="30" VerticalAlignment="Top" Margin="0,10,0,0" HorizontalAlignment="Center">
+        <!--<StackPanel Visibility="Hidden" Orientation="Horizontal" Height="30" VerticalAlignment="Top" Margin="0,10,0,0" HorizontalAlignment="Center">
             <Button x:Name="btn_cpysave1"
                     Style="{StaticResource ButtonStyle}" 
                     FontFamily="Consolas" Foreground="Gray" FontSize="14"
@@ -29,13 +23,34 @@
                     FontFamily="Consolas" Foreground="Gray" FontSize="14"
                     Height="23" Width="95" Margin="5,0,5,0"
                     Content="Copy save 3" Click="btn_cpysave3_Click"/>
-        </StackPanel>
-
+        </StackPanel>-->
+        
+        
+        
+        
         <Button x:Name="btn_deletallsaves" VerticalAlignment="Top"
                 Style="{StaticResource ButtonStyle}" 
                 FontFamily="Consolas" Foreground="Gray" FontSize="14"
-                Height="23" Width="125" Margin="0, 50, 0, 0"
-                Content="Delet all saves" Click="btn_deletallsaves_Click"/>
+                Height="23" Width="220" Margin="0, 12.5, 0, 0" ToolTip="Elimina solo los archivos del programa los del juego no"
+                Content="Eliminar todos los archivos" Click="btn_deletallsaves_Click"/>
+
+        <StackPanel Orientation="Horizontal" VerticalAlignment="Top" Margin="0, 50, 0, 0" HorizontalAlignment="Center">
+            <Label x:Name="lblSave1"
+                   Style="{StaticResource lblSSaves}" FontSize="13.5"
+                   Margin="0,0,15,0"
+                   Content="Archivo 1"/>
+            
+            <Label x:Name="lblSave2"
+                   Style="{StaticResource lblSSaves}" FontSize="13.5"
+                   Content="Archivo 2"/>
+            
+            <Label x:Name="lblSave3"
+                   Style="{StaticResource lblSSaves}" FontSize="13.5" 
+                   Margin="15,0,0,0"
+                   Content="Archivo 3"/>
+        </StackPanel>
+
+        <Border Height="0.75" BorderBrush="DimGray" Background="DimGray" VerticalAlignment="Top" Margin="0,88,0,0"/>
 
         <!--#region// Content StackPanel //-->
         <ScrollViewer Visibility="Visible"
@@ -52,211 +67,7 @@
             <Grid>
                 <StackPanel x:Name="SP_saves" Orientation="Vertical" Grid.ColumnSpan="8">
                     <!--#endregion-->
-                    <!--<Label Style="{StaticResource lblCT}" Content="MWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWM"/>-->
-                    <!--<Button Content="Hola 123"/>
-                    <Button Content="Hola 123"/>
-                    <Button Content="Hola 123"/>
-                    <Button Content="Hola 123"/>
-                    <Button Content="Hola 123"/>
-                    <Button Content="Hola 123"/>
-                    <Button Content="Hola 123"/>
-                    <Button Content="Hola 123"/>
-                    <Button Content="Hola 123"/>
-                    <Button Content="Hola 123"/>
-                    <Button Content="Hola 123"/>
-                    <Button Content="Hola 123"/>
-                    <Button Content="Hola 123"/>
-                    <Button Content="Hola 123"/>
-                    <Button Content="Hola 123"/>
-                    <Button Content="Hola 123"/>
-                    <Button Content="Hola 123"/>
-                    <Button Content="Hola 123"/>
-                    <Button Content="Hola 123"/>
-                    <Button Content="Hola 123"/>
-                    <Button Content="Hola 123"/>
-                    <Button Content="Hola 123"/>
-                    <Button Content="Hola 123"/>
-                    <Button Content="Hola 123"/>
-                    <Button Content="Hola 123"/>
-                    <Button Content="Hola 123"/>
-                    <Button Content="Hola 123"/>
-                    <Button Content="Hola 123"/>
-                    <Button Content="Hola 123"/>
-                    <Button Content="Hola 123"/>
-                    <Button Content="Hola 123"/>
-                    <Button Content="Hola 123"/>
-                    <Button Content="Hola 123"/>
-                    <Button Content="Hola 123"/>
-                    <Button Content="Hola 123"/>
-                    <Button Content="Hola 123"/>
-                    <Button Content="Hola 123"/>
-                    <Button Content="Hola 123"/>
-                    <Button Content="Hola 123"/>
-                    <Button Content="Hola 123"/>
-                    <Button Content="Hola 123"/>
-                    <Button Content="Hola 123"/>
-                    <Button Content="Hola 123"/>
-                    <Button Content="Hola 123"/>
-                    <Button Content="Hola 123"/>
-                    <Button Content="Hola 123"/>
-                    <Button Content="Hola 123"/>
-                    <Button Content="Hola 123"/>
-                    <Button Content="Hola 123"/>
-                    <Button Content="Hola 123"/>
-                    <Button Content="Hola 123"/>
-                    <Button Content="Hola 123"/>
-                    <Button Content="Hola 123"/>
-                    <Button Content="Hola 123"/>
-                    <Button Content="Hola 123"/>
-                    <Button Content="Hola 123"/>
-                    <Button Content="Hola 123"/>
-                    <Button Content="Hola 123"/>
-                    <Button Content="Hola 123"/>
-                    <Button Content="Hola 123"/>
-                    <Button Content="Hola 123"/>
-                    <Button Content="Hola 123"/>
-                    <Button Content="Hola 123"/>
-                    <Button Content="Hola 123"/>
-                    <Button Content="Hola 123"/>
-                    <Button Content="Hola 123"/>
-                    <Button Content="Hola 123"/>
-                    <Button Content="Hola 123"/>
-                    <Button Content="Hola 123"/>
-                    <Button Content="Hola 123"/>
-                    <Button Content="Hola 123"/>
-                    <Button Content="Hola 123"/>
-                    <Button Content="Hola 123"/>
-                    <Button Content="Hola 123"/>
-                    <Button Content="Hola 123"/>
-                    <Button Content="Hola 123"/>
-                    <Button Content="Hola 123"/>
-                    <Button Content="Hola 123"/>
-                    <Button Content="Hola 123"/>
-                    <Button Content="Hola 123"/>
-                    <Button Content="Hola 123"/>
-                    <Button Content="Hola 123"/>
-                    <Button Content="Hola 123"/>
-                    <Button Content="Hola 123"/>
-                    <Button Content="Hola 123"/>
-                    <Button Content="Hola 123"/>
-                    <Button Content="Hola 123"/>
-                    <Button Content="Hola 123"/>
-                    <Button Content="Hola 123"/>
-                    <Button Content="Hola 123"/>
-                    <Button Content="Hola 123"/>
-                    <Button Content="Hola 123"/>
-                    <Button Content="Hola 123"/>
-                    <Button Content="Hola 123"/>
-                    <Button Content="Hola 123"/>
-                    <Button Content="Hola 123"/>
-                    <Button Content="Hola 123"/>
-                    <Button Content="Hola 123"/>
-                    <Button Content="Hola 123"/>
-                    <Button Content="Hola 123"/>
-                    <Button Content="Hola 123"/>
-                    <Button Content="Hola 123"/>
-                    <Button Content="Hola 123"/>
-                    <Button Content="Hola 123"/>
-                    <Button Content="Hola 123"/>
-                    <Button Content="Hola 123"/>
-                    <Button Content="Hola 123"/>
-                    <Button Content="Hola 123"/>
-                    <Button Content="Hola 123"/>
-                    <Button Content="Hola 123"/>
-                    <Button Content="Hola 123"/>
-                    <Button Content="Hola 123"/>
-                    <Button Content="Hola 123"/>
-                    <Button Content="Hola 123"/>
-                    <Button Content="Hola 123"/>
-                    <Button Content="Hola 123"/>
-                    <Button Content="Hola 123"/>
-                    <Button Content="Hola 123"/>
-                    <Button Content="Hola 123"/>
-                    <Button Content="Hola 123"/>
-                    <Button Content="Hola 123"/>
-                    <Button Content="Hola 123"/>
-                    <Button Content="Hola 123"/>
-                    <Button Content="Hola 123"/>
-                    <Button Content="Hola 123"/>
-                    <Button Content="Hola 123"/>
-                    <Button Content="Hola 123"/>
-                    <Button Content="Hola 123"/>
-                    <Button Content="Hola 123"/>
-                    <Button Content="Hola 123"/>
-                    <Button Content="Hola 123"/>
-                    <Button Content="Hola 123"/>
-                    <Button Content="Hola 123"/>
-                    <Button Content="Hola 123"/>
-                    <Button Content="Hola 123"/>
-                    <Button Content="Hola 123"/>
-                    <Button Content="Hola 123"/>
-                    <Button Content="Hola 123"/>
-                    <Button Content="Hola 123"/>
-                    <Button Content="Hola 123"/>
-                    <Button Content="Hola 123"/>
-                    <Button Content="Hola 123"/>
-                    <Button Content="Hola 123"/>
-                    <Button Content="Hola 123"/>
-                    <Button Content="Hola 123"/>
-                    <Button Content="Hola 123"/>
-                    <Button Content="Hola 123"/>
-                    <Button Content="Hola 123"/>
-                    <Button Content="Hola 123"/>
-                    <Button Content="Hola 123"/>
-                    <Button Content="Hola 123"/>
-                    <Button Content="Hola 123"/>
-                    <Button Content="Hola 123"/>
-                    <Button Content="Hola 123"/>
-                    <Button Content="Hola 123"/>
-                    <Button Content="Hola 123"/>
-                    <Button Content="Hola 123"/>
-                    <Button Content="Hola 123"/>
-                    <Button Content="Hola 123"/>
-                    <Button Content="Hola 123"/>
-                    <Button Content="Hola 123"/>
-                    <Button Content="Hola 123"/>
-                    <Button Content="Hola 123"/>
-                    <Button Content="Hola 123"/>
-                    <Button Content="Hola 123"/>
-                    <Button Content="Hola 123"/>
-                    <Button Content="Hola 123"/>
-                    <Button Content="Hola 123"/>
-                    <Button Content="Hola 123"/>
-                    <Button Content="Hola 123"/>
-                    <Button Content="Hola 123"/>
-                    <Button Content="Hola 123"/>
-                    <Button Content="Hola 123"/>
-                    <Button Content="Hola 123"/>
-                    <Button Content="Hola 123"/>
-                    <Button Content="Hola 123"/>
-                    <Button Content="Hola 123"/>
-                    <Button Content="Hola 123"/>
-                    <Button Content="Hola 123"/>
-                    <Button Content="Hola 123"/>
-                    <Button Content="Hola 123"/>
-                    <Button Content="Hola 123"/>
-                    <Button Content="Hola 123"/>
-                    <Button Content="Hola 123"/>
-                    <Button Content="Hola 123"/>
-                    <Button Content="Hola 123"/>
-                    <Button Content="Hola 123"/>
-                    <Button Content="Hola 123"/>
-                    <Button Content="Hola 123"/>
-                    <Button Content="Hola 123"/>
-                    <Button Content="Hola 123"/>
-                    <Button Content="Hola 123"/>
-                    <Button Content="Hola 123"/>
-                    <Button Content="Hola 123"/>
-                    <Button Content="Hola 123"/>
-                    <Button Content="Hola 123"/>
-                    <Button Content="Hola 123"/>
-                    <Button Content="Hola 123"/>
-                    <Button Content="Hola 123"/>
-                    <Button Content="Hola 123"/>
-                    <Button Content="Hola 123"/>
-                    <Button Content="Hola 123"/>
-                    <Button Content="Hola 123"/>
-                    <Button Content="Hola 123"/>-->
+                    
                 </StackPanel>
             </Grid>
         </ScrollViewer>

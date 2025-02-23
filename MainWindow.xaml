@@ -14,6 +14,7 @@
         <!-- #region definiciones -->
         <Grid.RowDefinitions>
             <RowDefinition Height="31"/>
+            <!--<RowDefinition Height="20"/>-->
             <RowDefinition/>
         </Grid.RowDefinitions>
         <!--#endregion-->
@@ -77,8 +78,28 @@
                     BorderThickness=".5" BorderBrush="DimGray"/>
             <!--#endregion-->
         </Grid>
-        
-        <Border x:Name="borde" Grid.RowSpan="2" BorderThickness=".5" BorderBrush="DimGray" Visibility="Collapsed"/>
+
+        <!--<Menu Background="{StaticResource Background}"
+              Height="20"
+              VerticalAlignment="Top"
+              Grid.Row="1">
+
+            <MenuItem Header="Configuracion"
+                      Style="{StaticResource MenuItem_Dropdown}"
+                      FontWeight="Bold"
+                      Height="20"
+                      Width="107">
+
+                <MenuItem Header="Habilitar MessagBox"
+                          Style="{StaticResource Main_MenuItem}"
+                          FontWeight="Bold"
+                          Height="20"
+                          Width="147"/>
+            </MenuItem>
+        </Menu>-->
+
+        <Border Grid.Row="1" BorderThickness="0,0,0,.5" BorderBrush="DimGray"/>
+        <Border x:Name="borde" Grid.Row="0" Grid.RowSpan="3" BorderThickness=".5" BorderBrush="DimGray" Visibility="Collapsed"/>
         <!--#endregion-->
     </Grid>
 </Window>

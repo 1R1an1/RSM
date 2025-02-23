@@ -1,5 +1,4 @@
 ﻿using Rain_save_manager.Model;
-using Rain_save_manager.Views;
 using Rain_save_manager.Windows;
 using System;
 using System.Collections.Generic;
