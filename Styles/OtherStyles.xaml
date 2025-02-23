@@ -81,7 +81,6 @@
         <Setter Property="Foreground" Value="Gray"/>
         <Setter Property="FontFamily" Value="Consolas"/>
         <Setter Property="FontWeight" Value="Bold"/>
-        <Setter Property="Background" Value="#1D1C1E"/>
         <Setter Property="VerticalAlignment" Value="Center"/>
         <Setter Property="HorizontalAlignment" Value="Center"/>
         <Setter Property="VerticalContentAlignment" Value="Center"/>
@@ -100,6 +99,7 @@
     </Style>
 
     <Style x:Key="lblS" TargetType="Label" BasedOn="{StaticResource lblSNT}">
+        <Setter Property="Background" Value="#1D1C1E"/>
         <Style.Triggers>
             <Trigger Property="IsMouseOver" Value="True">
                 <Setter Property="Background" Value="{StaticResource NormalColorMouseOver}"/>
