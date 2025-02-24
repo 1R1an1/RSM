@@ -88,7 +88,7 @@ namespace Rain_save_manager.Core
             Directory.Delete(App.appsaves, true);
             Directory.CreateDirectory(App.appsaves);
 
-            LoadData.savesdata = new SavesData();
+            LoadData.savesData = new SavesData();
             return true;
         }
         private bool msbRemplazarArchivo() => MessageBox.Show("Replazar archivo?", "replazar", MessageBoxButton.YesNo, MessageBoxImage.Warning) == MessageBoxResult.Yes;
