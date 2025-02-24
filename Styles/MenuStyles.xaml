@@ -29,6 +29,53 @@
         </Setter>
     </Style>
 
+    <Style x:Key="Main_MenuItem_checkbox" TargetType="MenuItem">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="MenuItem">
+                    <Border x:Name="border"
+                            Background="{StaticResource NormalColorNormal}"
+                            BorderThickness="0">
+
+                        <Grid>
+                            <ContentPresenter  ContentSource="Header"
+                                               TextBlock.Foreground="Gray"
+                                               TextBlock.FontFamily="Consolas"
+                                               TextBlock.FontSize="13.5"
+                                               HorizontalAlignment="Right"
+                                               VerticalAlignment="Center"
+                                               Margin="0,0,7,0"/>
+
+                            <CheckBox x:Name="checkbox"
+                                      IsChecked="{Binding IsChecked, RelativeSource={RelativeSource TemplatedParent}}"
+                                      Style="{DynamicResource CheckBox}"
+                                      Background="{StaticResource NormalColorNormal}"
+                                      BorderBrush="Gray"
+                                      VerticalAlignment="Top"
+                                      HorizontalAlignment="Left"
+                                      BorderThickness="1.25"
+                                      Margin="5,1.35,5,0" Width="{TemplateBinding Width}">
+                                <CheckBox.RenderTransform>
+                                    <ScaleTransform ScaleX="1.1" ScaleY="1.1"/>
+                                </CheckBox.RenderTransform>
+                            </CheckBox>
+                        </Grid>
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="Tag" Value="IsHighlighted">
+                            <Setter Property="Background" TargetName="border" Value="{StaticResource NormalColorNormal}"/>
+                            <Setter Property="BorderBrush" TargetName="border" Value="{StaticResource NormalColorMouseOver}"/>
+                        </Trigger>
+                        <!--<DataTrigger Binding="{Binding RelativeSource={RelativeSource AncestorType=MenuItem}, Path=Parent}" Value="{x:Null}">
+                            <Setter Property="Visibility" TargetName="checkbox" Value="Collapsed"/>
+                        </DataTrigger>-->
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+
     <Style x:Key="MenuItem_Dropdown" TargetType="MenuItem">
         <Setter Property="Template">
             <Setter.Value>
