@@ -1,8 +1,5 @@
 ﻿using Rain_save_manager.Model;
 using Rain_save_manager.Windows;
-#if DEBUG
-using System;
-#endif
 using System.Collections.Generic;
 using System.IO;
 using System.Windows;
@@ -44,9 +41,6 @@ namespace Rain_save_manager.Core
             bool? resultado = renameSave.ShowDialog();
             if (resultado == true)
             {
-#if DEBUG
-                Console.WriteLine(renameSave.texto);
-#endif
                 SaveData save = SavesDataLogic.FindSaveDataForId(id);
                 save.saveName = (renameSave.texto.Trim().Length == 0 ? "partida-" + id : renameSave.texto);
             }

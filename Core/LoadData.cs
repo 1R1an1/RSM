@@ -1,8 +1,4 @@
 ﻿using Rain_save_manager.Model;
-#if DEBUG
-using FortiCrypts;
-using System;
-#endif
 using System.IO;
 
 namespace Rain_save_manager.Core
@@ -16,13 +12,8 @@ namespace Rain_save_manager.Core
         {
             ComprobarData<SavesData>(out var result);
             savesData = result;
+
             SavesDataLogic.VerifyInvalidSaves();
-
-            #if DEBUG
-            ConfigSystem.WriteConfigFile(SavesData.fileName, savesData);
-            Console.WriteLine(AES128.Decrypt(File.ReadAllText(Path.Combine(App.appconfig, SavesData.fileName + ".rsm")), CryptoUtils.defaultPassword));
-            #endif
-
         }
         public static void Close()
         {

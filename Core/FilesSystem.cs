@@ -1,9 +1,6 @@
 ﻿using FortiCrypts;
 using System.IO;
 using Newtonsoft.Json;
-#if DEBUG
-using System;
-#endif
 using Rain_save_manager.Model;
 
 namespace Rain_save_manager.Core
@@ -17,9 +14,6 @@ namespace Rain_save_manager.Core
             string filepath = Path.Combine(App.appRSM, directory.ToString(), $"{typeof(T).Name}.rsm");
             string text = File.ReadAllText(filepath);
             string textDecrypted = AES256.Decrypt(text, CryptoUtils.defaultPassword);
-            #if DEBUG
-                Console.WriteLine(textDecrypted);
-            #endif
             var result = JsonConvert.DeserializeObject<T>(textDecrypted);
 
             return result;
@@ -33,9 +27,6 @@ namespace Rain_save_manager.Core
 #endif
 
             var json = JsonConvert.SerializeObject(obj, Formatting.Indented);
-            #if DEBUG
-                Console.WriteLine(json);
-            #endif
             string jsonEncrypted = AES256.Encrypt(json, CryptoUtils.defaultPassword);
 
             File.WriteAllText(filepath, jsonEncrypted);
