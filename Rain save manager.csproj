@@ -65,9 +65,13 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Core\BackupManager.cs" />
+    <Compile Include="Core\BackupManagerUI.cs" />
     <Compile Include="Core\SaveManager.cs" />
     <Compile Include="Core\SaveManagerUI.cs" />
     <Compile Include="Core\SavesDataLogic.cs" />
+    <Compile Include="Model\BackupData.cs" />
+    <Compile Include="Model\BackupsData.cs" />
     <Compile Include="Model\Enums.cs" />
     <Compile Include="Model\ConfigBehaviour.cs" />
     <Compile Include="Model\SaveData.cs" />
@@ -76,6 +80,9 @@
     <Compile Include="Core\FilesSystem.cs" />
     <Compile Include="Core\LoadData.cs" />
     <Compile Include="Core\SavesSystem.cs" />
+    <Compile Include="Views\BackupView.xaml.cs">
+      <DependentUpon>BackupView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\RenameSavesView.xaml.cs">
       <DependentUpon>RenameSavesView.xaml</DependentUpon>
       <SubType>Code</SubType>
@@ -123,6 +130,10 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="Styles\ScrollViewerStyles.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\BackupView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
