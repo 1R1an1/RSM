@@ -12,19 +12,19 @@
             <Button HorizontalAlignment="Center" VerticalAlignment="Bottom"
                     Style="{StaticResource ButtonStyle}" 
                     Foreground="Gray" FontSize="13.5"
-                    Width="82.5" Height="25" Margin="0,0,50,0"
+                    Padding="11.5, 4.6, 11.5, 4.6" Margin="0,0,50,0"
                     Content="Ranura 1" ToolTip="Remplazaras la ranura 1 por el archivo de guardado seleccionado" Click="Button_Click"/>
 
             <Button HorizontalAlignment="Center" VerticalAlignment="Bottom"
                     Style="{StaticResource ButtonStyle}" 
                     Foreground="Gray" FontSize="13.5"
-                    Width="82.5" Height="25" 
+                    Padding="11.5, 4.6, 11.5, 4.6" 
                     Content="Ranura 2" ToolTip="Remplazaras la ranura 2 por el archivo de guardado seleccionado" Click="Button_Click_1"/>
 
             <Button HorizontalAlignment="Center" VerticalAlignment="Bottom"
                     Style="{StaticResource ButtonStyle}" 
                     Foreground="Gray" FontSize="13.5"
-                    Width="82.5" Height="25" Margin="50,0,0,0"
+                    Padding="11.5, 4.6, 11.5, 4.6" Margin="50,0,0,0"
                     Content="Ranura 3" ToolTip="Remplazaras la ranura 3 por el archivo de guardado seleccionado" Click="Button_Click_2"/>
         </StackPanel>
     </Grid>

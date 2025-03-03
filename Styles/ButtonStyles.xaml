@@ -93,10 +93,11 @@
         <Setter Property="VerticalAlignment" Value="Center"/>
         <Setter Property="Tag" Value="{StaticResource NormalColorNormal}"/>
         <Setter Property="BorderBrush" Value="{StaticResource NormalColorMouseOver}"/>
+        <Setter Property="Padding" Value="5.5,2.5,5.5,2.5"/>
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="Button">
-                    <Border CornerRadius="5" Background="{TemplateBinding Background}">
+                    <Border CornerRadius="5" Background="{TemplateBinding Background}" Padding="{TemplateBinding Padding}">
                         <!--<Border Width="22" Height="22" CornerRadius="11" Background="{TemplateBinding Background}">-->
                         <ContentPresenter VerticalAlignment="Center" HorizontalAlignment="Center"/>
                     </Border>

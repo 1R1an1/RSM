@@ -18,7 +18,7 @@
             <Button HorizontalAlignment="Center" VerticalAlignment="Bottom"
                     Style="{StaticResource ButtonStyle}" 
                     Foreground="Gray"
-                    Width="80" Height="20"
+                    Padding="16.9, 2.96, 16.9, 2.96"
                     Content="Aceptar" Click="Button_Click"/>
         </StackPanel>
     </Grid>
