@@ -6,6 +6,10 @@
     <!-- Button normal color -->
     <Brush x:Key="NormalColorNormal">#252423</Brush>
     <Brush x:Key="NormalColorMouseOver">#2F2D2D</Brush>
+    <Brush x:Key="NormalColorDisabled">#66252423</Brush>
+
+    <Brush x:Key="FontColor">#808080</Brush>
+    <Brush x:Key="FontColorDisabled">#66808080</Brush>
 
     <!-- Button download color -->
     <Brush x:Key="DownloadColorNormal">#0081FF</Brush>
@@ -24,6 +28,10 @@
     <!-- Button normal color -->
     <Color x:Key="NormalColorNormal1">#252423</Color>
     <Color x:Key="NormalColorMouseOver1">#2F2D2D</Color>
+    <Color x:Key="NormalColorDisabled1">#66252423</Color>
+
+    <Color x:Key="FontColor1">#808080</Color>
+    <Color x:Key="FontColorDisabled1">#66808080</Color>
 
     <!-- Button download color -->
     <Color x:Key="DownloadColorNormal1">#0081FF</Color>

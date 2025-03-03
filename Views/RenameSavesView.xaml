@@ -16,8 +16,7 @@
                      Width="255" Margin="0,0,0,10"/>
 
             <Button HorizontalAlignment="Center" VerticalAlignment="Bottom"
-                    Style="{StaticResource ButtonStyle}" 
-                    Foreground="Gray"
+                    Style="{StaticResource ButtonStyle}"
                     Padding="16.9, 2.96, 16.9, 2.96"
                     Content="Aceptar" Click="Button_Click"/>
         </StackPanel>
