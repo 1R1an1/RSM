@@ -5,12 +5,12 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Rain_save_manager.Views"
              mc:Ignorable="d" 
-             d:DesignHeight="419" d:DesignWidth="325">
+             d:DesignHeight="399" d:DesignWidth="325">
     <Grid>
         <Button x:Name="btn_deletallsaves" VerticalAlignment="Top"
                 Style="{StaticResource ButtonStyle}" 
                 FontFamily="Consolas" Foreground="Gray" FontSize="14"
-                Height="23" Width="220" Margin="0, 12.5, 0, 0" ToolTip="Elimina solo los archivos del programa los del juego no"
+                Margin="0, 12.5, 0, 0" ToolTip="Elimina solo los archivos del programa los del juego no"
                 Content="Eliminar todos los archivos" Click="btn_deletallsaves_Click"/>
 
         <StackPanel Orientation="Horizontal" VerticalAlignment="Top" Margin="0, 50, 0, 0" HorizontalAlignment="Center">
@@ -18,11 +18,11 @@
                    Style="{StaticResource lblSSaves}" FontSize="13.5"
                    Margin="0,0,15,0"
                    Content="Archivo 1"/>
-            
+
             <Label x:Name="lblSave2"
                    Style="{StaticResource lblSSaves}" FontSize="13.5"
                    Content="Archivo 2"/>
-            
+
             <Label x:Name="lblSave3"
                    Style="{StaticResource lblSSaves}" FontSize="13.5" 
                    Margin="15,0,0,0"
@@ -33,8 +33,8 @@
 
         <ScrollViewer Visibility="Visible"
                       VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Hidden"
-                      Height="300" Width="300" Margin="10, 90, 10, 10"
-                      VerticalAlignment="Center" HorizontalAlignment="Center">
+                      Height="290" Width="300" Margin="10, 0, 10, 10"
+                      VerticalAlignment="Bottom" HorizontalAlignment="Center">
 
             <ScrollViewer.Resources>
                 <Style TargetType="ScrollBar">
@@ -42,7 +42,7 @@
                     <Setter Property="Template" Value="{StaticResource VerticalScrollBar}"/>
                 </Style>
             </ScrollViewer.Resources>
-            
+
             <Grid>
                 <StackPanel x:Name="SP_saves" Orientation="Vertical" Grid.ColumnSpan="8"/>
             </Grid>
