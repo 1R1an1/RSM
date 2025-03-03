@@ -8,3 +8,4 @@ dll/FortiCryptBC2.dll
 dll/FortiCryptBC3.dll
 dll/FortiCryptBC4.dll
 .editorconfig
+TestView.*
