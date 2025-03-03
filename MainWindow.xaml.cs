@@ -12,7 +12,7 @@ namespace Rain_save_manager
         {
             InitializeComponent();
             borde.Visibility = Visibility.Visible;
-            //borde1.Visibility = Visibility.Visible;
+            borde1.Visibility = Visibility.Visible;
         }
 
         private void MoveWindow(object sender, MouseButtonEventArgs e)
@@ -32,11 +32,18 @@ namespace Rain_save_manager
         private void mi_home_Click(object sender, RoutedEventArgs e)
         {
             CDU_MainView.Visibility = Visibility.Visible;
+            CDU_BackupView.Visibility = Visibility.Collapsed;
+            Height = 450;
+            Width = 325;
+            
         }
 
         private void mi_backup_Click(object sender, RoutedEventArgs e)
         {
             CDU_MainView.Visibility = Visibility.Collapsed;
+            CDU_BackupView.Visibility = Visibility.Visible;
+            Height = 450;
+            Width = 800;
         }
     }
 }
