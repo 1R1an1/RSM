@@ -6,6 +6,7 @@
     <!-- Button normal color -->
     <Brush x:Key="NormalColorNormal">#252423</Brush>
     <Brush x:Key="NormalColorMouseOver">#2F2D2D</Brush>
+    <Brush x:Key="NormalColorMouseOver2">#363434</Brush>
     <Brush x:Key="NormalColorDisabled">#66252423</Brush>
 
     <Brush x:Key="FontColor">#808080</Brush>
