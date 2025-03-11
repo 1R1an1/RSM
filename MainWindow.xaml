@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:Rain_save_manager"
         xmlns:Views="clr-namespace:Rain_save_manager.Views"
         mc:Ignorable="d"
-        Title="Rain save manager (RSM)" Height="450" Width="325" Background="{StaticResource Background}"
+        Title="Rain save manager (RSM)" Height="450" Width="650" Background="{StaticResource Background}"
         WindowStartupLocation="CenterScreen" ResizeMode="CanMinimize" WindowStyle="None">
 
 
