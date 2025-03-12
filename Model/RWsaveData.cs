@@ -1,4 +1,6 @@
-﻿namespace Rain_save_manager.Model
+﻿using static Rain_save_manager.Model.Enums;
+
+namespace Rain_save_manager.Model
 {
     /*
     public class RWsaveData
@@ -20,22 +22,19 @@
 
     public class RWsaveData
     {
-        public int CycleNumber { get; set; }
-        public int Deaths { get; set; }
-        //public int SurvivedCycles { get; set; }
-        //public int AbandonedCycles { get; set; }
-        public int TotalTime { get; set; } // En segundos
-        //public int TotalFood { get; set; }
-        //public int Food { get; set; }
-        //public string DenPosition { get; set; }
-        public int KarmaLevel { get; set; }
-        //public int KarmaCap { get; set; }
-        public bool ReinforcedKarma { get; set; }
-        //public bool SlugpupSpawn { get; set; }
+        public RainWorldCharacter SlugCat;
+        public int CycleNumber;
+        public int Deaths;
+        public int TotalTime; // En segundos
+        public int KarmaLevel;
+        public bool ReinforcedKarma;
 
-        public RWsaveData()
-        {
-            // Inicialización opcional de valores predeterminados
-        }
+        //public int SurvivedCycles;
+        //public int AbandonedCycles;
+        //public int TotalFood;
+        //public int Food;
+        //public string DenPosition;
+        //public int KarmaCap;
+        //public bool SlugpupSpawn;
     }
 }

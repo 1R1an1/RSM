@@ -30,9 +30,14 @@ namespace Rain_save_manager.Core
             { RainWorldCharacter.WingCat, "WingCat&lt;svA&gt;SEED&lt;svB&gt;" }
         };
 
-        public static Dictionary<RainWorldCharacter, RWsaveData> ReadSaveData(string filePath)
+        public static Dictionary<RainWorldCharacter, RWsaveData> ReadSaveData(string file, bool IsFilePath)
         {
-            string fileContent = File.ReadAllText(filePath);
+            string fileContent;
+            if (IsFilePath)
+                fileContent = File.ReadAllText(file);
+            else
+                fileContent = file;
+
             Dictionary<RainWorldCharacter, RWsaveData> allCharactersData = new Dictionary<RainWorldCharacter, RWsaveData>();
 
             foreach (var characterPair in characterTags)
@@ -40,7 +45,7 @@ namespace Rain_save_manager.Core
                 int characterStart = fileContent.LastIndexOf(characterPair.Value, StringComparison.Ordinal);
                 if (characterStart != -1)
                 {
-                    RWsaveData data = ReadCharacterData(fileContent, characterStart);
+                    RWsaveData data = ReadCharacterData(fileContent, characterStart, characterPair.Key);
                     allCharactersData.Add(characterPair.Key, data);
                 }
             }
@@ -48,10 +53,11 @@ namespace Rain_save_manager.Core
             return allCharactersData;
         }
 
-        private static RWsaveData ReadCharacterData(string fileContent, int characterStart)
+        private static RWsaveData ReadCharacterData(string fileContent, int characterStart, RainWorldCharacter slugCat)
         {
             RWsaveData data = new RWsaveData();
 
+            data.SlugCat = slugCat;
             data.CycleNumber = ReadIntValue(fileContent, characterStart, ";CYCLENUM");
             data.Deaths = ReadIntValue(fileContent, characterStart, ";DEATHS");
             //data.SurvivedCycles = ReadIntValue(fileContent, characterStart, ";SURVIVES");
