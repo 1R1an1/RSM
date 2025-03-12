@@ -18,9 +18,10 @@ namespace Rain_save_manager.Core
                 string file = "sav-" + id;
                 string filedest = ((int)replaceSave.save).ToString();
                 File.Copy(Path.Combine(App.appsaves, file), Path.Combine(App.rainworldsaves, "sav" + (filedest == "1" ? "" : filedest)), true);
+                MessageBox.Show("Archivo utilizado en la ranura: " + filedest, "informacion", MessageBoxButton.OK, MessageBoxImage.Information);
             }
         }
-        public void UpdateSave(int id)
+        public void ActualizarSave(int id)
         {
             OtherWindows updateSave = new OtherWindows(Enums.OWT.ReplaceSave, "Actualizar partida");
 

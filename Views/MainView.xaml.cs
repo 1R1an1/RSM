@@ -53,7 +53,7 @@ namespace Rain_save_manager.Views
         }
 
         private void btn_CambiarNombre_Click(object sender, RoutedEventArgs e) { int id = saveManagerUI.GetSelectedRadioButton().Key; saveManager.CambiarNombreSave(id); saveManagerUI.ActualizarRadioButton(id); }
-        private void btn_Actualizar_Click(object sender, RoutedEventArgs e) { int id = saveManagerUI.GetSelectedRadioButton().Key; saveManager.UpdateSave(id); }
+        private void btn_Actualizar_Click(object sender, RoutedEventArgs e) { int id = saveManagerUI.GetSelectedRadioButton().Key; saveManager.ActualizarSave(id); }
         private void btn_Eliminar_Click(object sender, RoutedEventArgs e) { int id = saveManagerUI.GetSelectedRadioButton().Key; saveManager.EliminarSave(id); saveManagerUI.EliminarRadioButton(id); }
         private void btn_Utilizar_Click(object sender, RoutedEventArgs e) { int id = saveManagerUI.GetSelectedRadioButton().Key; saveManager.RemplazarSave(id); }
 
