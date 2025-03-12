@@ -2,24 +2,6 @@
 
 namespace Rain_save_manager.Model
 {
-    /*
-    public class RWsaveData
-    {
-        public Dictionary<int, string> slugCats;
-        //public List<>
-
-        public RWsaveData(Dictionary<int, string> slugCats)
-        {
-            this.slugCats = slugCats;
-        }
-
-        public RWsaveData()
-        {
-            slugCats = new Dictionary<int, string>();
-        }
-    }
-    */
-
     public class RWsaveData
     {
         public RainWorldCharacter SlugCat;
