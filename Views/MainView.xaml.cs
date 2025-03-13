@@ -4,6 +4,7 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Collections.Generic;
 using Rain_save_manager.Windows;
+using System.IO;
 
 namespace Rain_save_manager.Views
 {
@@ -58,5 +59,31 @@ namespace Rain_save_manager.Views
         private void btn_Utilizar_Click(object sender, RoutedEventArgs e) { int id = saveManagerUI.GetSelectedRadioButton().Key; saveManager.RemplazarSave(id); }
 
         private void SV_saves_ScrollChanged(object sender, ScrollChangedEventArgs e) => saveManagerUI.VerificarScrollbar();
+
+        private void btn_Info_Click(object sender, RoutedEventArgs e)
+        {
+            Dictionary<Enums.RainWorldCharacter, RWsaveData> saveData = RWreadSaves.ReadSaveData(Path.Combine(App.appsaves ,LoadData.savesData.Saves[saveManagerUI.GetSelectedRadioButton().Key].saveFileName), true);
+            InfoWindow infoWindow = new InfoWindow();
+            List<string> text = new List<string>();
+            foreach (var item in saveData)
+            {
+                text.Add($"SlugCat: {item.Key.ToString() }" +
+                         $"\nCiclo: {item.Value.CycleNumber}" +
+                         $"\nKarma Actual: {item.Value.KarmaLevel}" +
+                         $"\nKarma maximo: {item.Value.KarmaCap}" +
+                         $"\nFlor de karma: {(item.Value.ReinforcedKarma == false ? "desactivado" : "activado")}" +
+                         //$"\nTiempo jugado en partida: {TimeSpan.FromSeconds(item.Value.TotalTime).Hours}:{TimeSpan.FromSeconds(item.Value.TotalTime).Minutes}:{TimeSpan.FromSeconds(item.Value.TotalTime).Seconds}" +
+                         $"\nTiempo jugado en partida: {(item.Value.TotalTime / 3600):D2}:{((item.Value.TotalTime % 3600) / 60):D2}:{(item.Value.TotalTime % 60):D2}" +
+                         $"\nNumero de muertes: {item.Value.Deaths}" +
+                         $"\n\n");
+            }
+            string texts = "";
+            for (int i = 0; i < text.Count; i++)
+            {
+                texts += text[i];
+            }
+            infoWindow.ShowText(texts);
+            infoWindow.ShowDialog();
+        }
     }
 }

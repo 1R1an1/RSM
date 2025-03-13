@@ -37,6 +37,7 @@ namespace Rain_save_manager.Core
             string tagResource = enable ? "NormalColorNormal" : "NormalColorDisabled";
             string foregroundResource = enable ? "FontColor" : "FontColorDisabled";
 
+            SetButtonProperties(_mainView.btn_Info, enable, tagResource, foregroundResource);
             SetButtonProperties(_mainView.btn_Eliminar, enable, tagResource, foregroundResource);
             SetButtonProperties(_mainView.btn_CambiarNombre, enable, tagResource, foregroundResource);
             SetButtonProperties(_mainView.btn_Utilizar, enable, tagResource, foregroundResource);
