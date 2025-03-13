@@ -86,6 +86,33 @@ namespace Rain_save_manager.Core
             LoadData.savesData = new SavesData();
             return true;
         }
+        public void VerInfoSave(int id)
+        {
+            Dictionary<Enums.RainWorldCharacter, RWsaveData> saveData = RWreadSaves.ReadSaveData(Path.Combine(App.appsaves, LoadData.savesData.Saves[id].saveFileName), true);
+            InfoWindow infoWindow = new InfoWindow();
+            List<string> text = new List<string>();
+            int u = 0;
+            foreach (var item in saveData)
+            {
+                u++;
+                text.Add($"SlugCat: {item.Key.ToString()}" +
+                         $"\nCiclo: {item.Value.CycleNumber}" +
+                         $"\nKarma Actual: {item.Value.KarmaLevel}" +
+                         $"\nKarma maximo: {item.Value.KarmaCap}" +
+                         $"\nFlor de karma: {(item.Value.ReinforcedKarma == false ? "desactivado" : "activado")}" +
+                         //$"\nTiempo jugado en partida: {TimeSpan.FromSeconds(item.Value.TotalTime).Hours}:{TimeSpan.FromSeconds(item.Value.TotalTime).Minutes}:{TimeSpan.FromSeconds(item.Value.TotalTime).Seconds}" +
+                         $"\nTiempo jugado en partida: {(item.Value.TotalTime / 3600):D2}:{((item.Value.TotalTime % 3600) / 60):D2}:{(item.Value.TotalTime % 60):D2}" +
+                         $"\nNumero de muertes: {item.Value.Deaths}" +
+                         $"{(u < saveData.Count ? "\n\n" : "")}");
+            }
+            string texts = "";
+            for (int i = 0; i < text.Count; i++)
+            {
+                texts += text[i];
+            }
+            infoWindow.ShowText(texts);
+            infoWindow.ShowDialog();
+        }
         private bool msbRemplazarArchivo() => MessageBox.Show("Replazar archivo?", "replazar", MessageBoxButton.YesNo, MessageBoxImage.Warning) == MessageBoxResult.Yes;
     }
     
