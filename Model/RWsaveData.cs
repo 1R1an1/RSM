@@ -8,6 +8,7 @@ namespace Rain_save_manager.Model
         public int CycleNumber;
         public int Deaths;
         public int TotalTime; // En segundos
+        public int KarmaCap;
         public int KarmaLevel;
         public bool ReinforcedKarma;
 
@@ -16,7 +17,6 @@ namespace Rain_save_manager.Model
         //public int TotalFood;
         //public int Food;
         //public string DenPosition;
-        //public int KarmaCap;
         //public bool SlugpupSpawn;
     }
 }
