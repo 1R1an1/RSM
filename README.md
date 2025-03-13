@@ -20,7 +20,7 @@ RSM todavía está en desarrollo, por lo que puede contener errores o fallos ine
 	Visualiza, organiza y administra todas tus partidas guardadas.
  
  - **Interfaz simple**:  
-  Una interfaz amigable y fácil de usar para gestionar tus partidas sin complicaciones.
+  Una interfaz amigable y fácil de usar para gestionar tus partidas.
  
 - **(Próximamente)** **Información de partidas**:  
   Accede a detalles de cada partida, como:
