@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:Rain_save_manager"
         xmlns:Views="clr-namespace:Rain_save_manager.Views"
         mc:Ignorable="d"
-        Title="Informacion partida (RSM)" Height="300" Width="200" Background="{StaticResource Background}"
+        Title="Informacion partida (RSM)" Height="400" Width="400" Background="{StaticResource Background}"
         WindowStartupLocation="CenterScreen" ResizeMode="CanMinimize" WindowStyle="None">
 
 
@@ -38,9 +38,9 @@
             <!-- #region Title -->
 
             <!-- #region Sin imagen -->
-            <Label Style="{StaticResource lblSNT}" VerticalAlignment="Center" HorizontalAlignment="Left" VerticalContentAlignment="Center"
+            <Label Style="{StaticResource lblSNT}" VerticalAlignment="Center" HorizontalContentAlignment="Left" VerticalContentAlignment="Center"
                    Grid.Column="0" Grid.Row="0"
-                   Height="31"
+                   Height="31" Width="365"
                    Foreground="White"
                    FontFamily="Consolas" FontWeight="Normal" FontSize="10.5"
                    Content="Informacion partida (RSM)" MouseDown="MoveWindow"/>

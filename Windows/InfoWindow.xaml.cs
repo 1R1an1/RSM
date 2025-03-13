@@ -40,6 +40,7 @@ namespace Rain_save_manager.Windows
                 HorizontalAlignment = ha,
                 Margin = margin
             };
+            contenido.Children.Add(tb);
         }
         public void ShowText(string text, VerticalAlignment va, HorizontalAlignment ha)
         {
@@ -50,6 +51,7 @@ namespace Rain_save_manager.Windows
                 VerticalAlignment = va,
                 HorizontalAlignment = ha
             };
+            contenido.Children.Add(tb);
         }
         public void ShowText(string text, VerticalAlignment va)
         {
@@ -59,6 +61,7 @@ namespace Rain_save_manager.Windows
                 Text = text,
                 VerticalAlignment = va
             };
+            contenido.Children.Add(tb);
         }
         public void ShowText(string text, HorizontalAlignment ha)
         {
@@ -68,6 +71,7 @@ namespace Rain_save_manager.Windows
                 Text = text,
                 HorizontalAlignment = ha
             };
+            contenido.Children.Add(tb);
         }
         public void ShowText(string text)
         {
@@ -76,6 +80,7 @@ namespace Rain_save_manager.Windows
                 Style = (Style)FindResource("TBS"),
                 Text = text,
             };
+            contenido.Children.Add(tb);
         }
     }
 }
