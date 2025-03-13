@@ -7,9 +7,9 @@
         public enum Save { Save_1 = 1, Save_2 = 2, Save_3 = 3 }
         public enum RainWorldCharacter
         {
-            Yellow,
-            White,
-            Red,
+            Monk,
+            Survivor,
+            Hunter,
             Gourmand,
             Artificer,
             Rivulet,
@@ -25,6 +25,5 @@
             Pearlcat,
             WingCat
         }
-
     }
 }

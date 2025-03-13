@@ -11,9 +11,9 @@ namespace Rain_save_manager.Core
 
         private static Dictionary<RainWorldCharacter, string> characterTags = new Dictionary<RainWorldCharacter, string>()
         {
-            { RainWorldCharacter.Yellow, "Yellow&lt;svA&gt;SEED&lt;svB&gt;" },
-            { RainWorldCharacter.White, "White&lt;svA&gt;SEED&lt;svB&gt;" },
-            { RainWorldCharacter.Red, "Red&lt;svA&gt;SEED&lt;svB&gt;" },
+            { RainWorldCharacter.Monk, "Yellow&lt;svA&gt;SEED&lt;svB&gt;" },
+            { RainWorldCharacter.Survivor, "White&lt;svA&gt;SEED&lt;svB&gt;" },
+            { RainWorldCharacter.Hunter, "Red&lt;svA&gt;SEED&lt;svB&gt;" },
             { RainWorldCharacter.Gourmand, "Gourmand&lt;svA&gt;SEED&lt;svB&gt;" },
             { RainWorldCharacter.Artificer, "Artificer&lt;svA&gt;SEED&lt;svB&gt;" },
             { RainWorldCharacter.Rivulet, "Rivulet&lt;svA&gt;SEED&lt;svB&gt;" },
@@ -67,7 +67,7 @@ namespace Rain_save_manager.Core
             //data.Food = ReadIntValue(fileContent, characterStart, ";FOOD");
             //data.DenPosition = ReadStringValue(fileContent, characterStart, ";DENPOS");
             data.KarmaLevel = ReadIntValue(fileContent, characterStart, ";KARMA");
-            //data.KarmaCap = ReadIntValue(fileContent, characterStart, ";KARMACAP");
+            data.KarmaCap = ReadIntValue(fileContent, characterStart, ";KARMACAP");
             data.ReinforcedKarma = ReadIntValue(fileContent, characterStart, ";REINFORCEDKARMA") == 1;
             //data.SlugpupSpawn = ReadIntValue(fileContent, characterStart, ";CyclesSinceSlugpup") == 100;
 
