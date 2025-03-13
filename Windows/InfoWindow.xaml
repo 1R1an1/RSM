@@ -6,7 +6,8 @@
         xmlns:local="clr-namespace:Rain_save_manager"
         xmlns:Views="clr-namespace:Rain_save_manager.Views"
         mc:Ignorable="d"
-        Title="Informacion partida (RSM)" Height="400" Width="400" Background="{StaticResource Background}"
+        SizeToContent="WidthAndHeight"
+        Title="Informacion partida (RSM)" Background="{StaticResource Background}"
         WindowStartupLocation="CenterScreen" ResizeMode="CanMinimize" WindowStyle="None">
 
 
@@ -20,7 +21,7 @@
         <!--#endregion-->
 
         <!-- #region contenido de ventana -->
-        <Grid Grid.Row="1" x:Name="contenido">
+        <Grid Grid.Row="1" x:Name="contenido" Margin="15">
             <!--<TextBlock Text="wdawdwaawdada" Style="{StaticResource TBS}"/>-->
         </Grid>
         <!--#endregion-->
@@ -34,15 +35,15 @@
                 <!--<ColumnDefinition Width="7"/>-->
             </Grid.ColumnDefinitions>
             <!--#endregion-->
-
+            
             <!-- #region Title -->
 
             <!-- #region Sin imagen -->
-            <Label Style="{StaticResource lblSNT}" VerticalAlignment="Center" HorizontalContentAlignment="Left" VerticalContentAlignment="Center"
+            <Label VerticalAlignment="Center" HorizontalContentAlignment="Left" VerticalContentAlignment="Center"
                    Grid.Column="0" Grid.Row="0"
-                   Height="31" Width="365"
+                   Height="31"
                    Foreground="White"
-                   FontFamily="Consolas" FontWeight="Normal" FontSize="10.5"
+                   FontFamily="Consolas" FontWeight="Bold" FontSize="11"
                    Content="Informacion partida (RSM)" MouseDown="MoveWindow"/>
             <!--#endregion-->
 

@@ -65,8 +65,10 @@ namespace Rain_save_manager.Views
             Dictionary<Enums.RainWorldCharacter, RWsaveData> saveData = RWreadSaves.ReadSaveData(Path.Combine(App.appsaves ,LoadData.savesData.Saves[saveManagerUI.GetSelectedRadioButton().Key].saveFileName), true);
             InfoWindow infoWindow = new InfoWindow();
             List<string> text = new List<string>();
+            int u = 0;
             foreach (var item in saveData)
             {
+                u++;
                 text.Add($"SlugCat: {item.Key.ToString() }" +
                          $"\nCiclo: {item.Value.CycleNumber}" +
                          $"\nKarma Actual: {item.Value.KarmaLevel}" +
@@ -75,7 +77,7 @@ namespace Rain_save_manager.Views
                          //$"\nTiempo jugado en partida: {TimeSpan.FromSeconds(item.Value.TotalTime).Hours}:{TimeSpan.FromSeconds(item.Value.TotalTime).Minutes}:{TimeSpan.FromSeconds(item.Value.TotalTime).Seconds}" +
                          $"\nTiempo jugado en partida: {(item.Value.TotalTime / 3600):D2}:{((item.Value.TotalTime % 3600) / 60):D2}:{(item.Value.TotalTime % 60):D2}" +
                          $"\nNumero de muertes: {item.Value.Deaths}" +
-                         $"\n\n");
+                         $"{(u < saveData.Count ? "\n\n" : "")}");
             }
             string texts = "";
             for (int i = 0; i < text.Count; i++)
