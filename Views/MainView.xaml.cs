@@ -4,7 +4,6 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Collections.Generic;
 using Rain_save_manager.Windows;
-using System.IO;
 
 namespace Rain_save_manager.Views
 {
