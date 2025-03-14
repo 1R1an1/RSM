@@ -129,7 +129,14 @@
         </Setter>
     </Style>-->
 
-    
+    <Style x:Key="TBS" TargetType="TextBlock">
+        <Setter Property="Foreground" Value="{StaticResource FontColor}"/>
+        <Setter Property="FontFamily" Value="Consolas"/>
+        <Setter Property="FontWeight" Value="Bold"/>
+        <Setter Property="VerticalAlignment" Value="Center"/>
+        <Setter Property="HorizontalAlignment" Value="Center"/>
+    </Style>
+
     <Style x:Key="TB" TargetType="{x:Type TextBox}">
         <Setter Property="Foreground" Value="Gray"/>
         <Setter Property="FontFamily" Value="Consolas"/>
