@@ -69,6 +69,8 @@
     <Compile Include="Core\SaveManager.cs" />
     <Compile Include="Core\SaveManagerUI.cs" />
     <Compile Include="Core\SavesDataLogic.cs" />
+    <Compile Include="Model\BackupData.cs" />
+    <Compile Include="Model\BackupsData.cs" />
     <Compile Include="Model\Enums.cs" />
     <Compile Include="Model\ConfigBehaviour.cs" />
     <Compile Include="Model\RWsaveData.cs" />
