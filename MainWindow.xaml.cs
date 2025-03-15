@@ -32,11 +32,13 @@ namespace Rain_save_manager
         private void mi_home_Click(object sender, RoutedEventArgs e)
         {
             CDU_MainView.Visibility = Visibility.Visible;
+            CDU_BackupsView.Visibility = Visibility.Collapsed;
         }
 
         private void mi_backup_Click(object sender, RoutedEventArgs e)
         {
             CDU_MainView.Visibility = Visibility.Collapsed;
+            CDU_BackupsView.Visibility = Visibility.Visible;
         }
     }
 }

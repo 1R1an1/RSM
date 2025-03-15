@@ -80,6 +80,9 @@
     <Compile Include="Core\FilesSystem.cs" />
     <Compile Include="Core\LoadData.cs" />
     <Compile Include="Core\SavesSystem.cs" />
+    <Compile Include="Views\BackupsView.xaml.cs">
+      <DependentUpon>BackupsView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\RenameSavesView.xaml.cs">
       <DependentUpon>RenameSavesView.xaml</DependentUpon>
       <SubType>Code</SubType>
@@ -126,6 +129,10 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="Styles\ScrollViewerStyles.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\BackupsView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

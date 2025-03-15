@@ -20,7 +20,8 @@
         <!--#endregion-->
 
         <!-- #region controles de usuario -->
-        <Views:MainView x:Name="CDU_MainView" Grid.Row="2"/>
+        <Views:MainView x:Name="CDU_MainView" Grid.Row="2" Visibility="Visible"/>
+        <Views:BackupsView x:Name="CDU_BackupsView" Grid.Row="2" Visibility="Collapsed"/>
         <!--#endregion-->
         
         <!-- #region Parte De arriba -->
