@@ -14,13 +14,13 @@
         <!-- #region definiciones -->
         <Grid.RowDefinitions>
             <RowDefinition Height="31"/>
-            <!--<RowDefinition Height="20"/>-->
+            <RowDefinition Height="20"/>
             <RowDefinition/>
         </Grid.RowDefinitions>
         <!--#endregion-->
 
         <!-- #region controles de usuario -->
-        <Views:MainView x:Name="CDU_MainView" Grid.Row="1"/>
+        <Views:MainView x:Name="CDU_MainView" Grid.Row="2"/>
         <!--#endregion-->
         
         <!-- #region Parte De arriba -->
@@ -79,7 +79,7 @@
             <!--#endregion-->
         </Grid>
 
-        <!--<Menu Background="{StaticResource Background}"
+        <Menu Background="{StaticResource Background}"
               Height="20"
               VerticalAlignment="Top"
               Grid.Row="1">
@@ -88,17 +88,18 @@
                       Style="{StaticResource Main_MenuItem}"
                       FontWeight="Bold"
                       Height="20"
-                      Width="60" Click="mi_home_Click"/>
-            
+                      Width="60"
+                      Click="mi_home_Click"/>
+
             <MenuItem x:Name="mi_backup" Header="Backup"
                       Style="{StaticResource Main_MenuItem}"
                       FontWeight="Bold"
                       Height="20"
-                      Width="60" Click="mi_backup_Click"/>
-        </Menu>-->
+                      Width="60"
+                      Click="mi_backup_Click"/>
+        </Menu>
 
-        
-        <!--<Border x:Name="borde1"  Grid.Row="1" BorderThickness="0,0,0,.5" BorderBrush="DimGray" Visibility="Collapsed"/>-->
+        <Border x:Name="borde1"  Grid.Row="1" BorderThickness="0,0,0,.5" BorderBrush="Gray" Visibility="Collapsed"/>
         <Border x:Name="borde" Grid.Row="0" Grid.RowSpan="3" BorderThickness=".5" BorderBrush="DimGray" Visibility="Collapsed"/>
         <!--#endregion-->
     </Grid>
