@@ -9,9 +9,19 @@ namespace Rain_save_manager.Core
     {
 
 
-        public static T ReadFile<T>(Enums.RSMD directory) where T : ConfigBehaviour
+        public static T ReadFile<T>(Enums.RSMD directory)
         {
             string filepath = Path.Combine(App.appRSM, directory.ToString(), $"{typeof(T).Name}.rsm");
+            string text = File.ReadAllText(filepath);
+            string textDecrypted = AES256.Decrypt(text, CryptoUtils.defaultPassword);
+            var result = JsonConvert.DeserializeObject<T>(textDecrypted);
+
+            return result;
+        }
+
+        public static T ReadFile<T>(Enums.RSMD directory, string fileName)
+        {
+            string filepath = Path.Combine(App.appRSM, directory.ToString(), fileName);
             string text = File.ReadAllText(filepath);
             string textDecrypted = AES256.Decrypt(text, CryptoUtils.defaultPassword);
             var result = JsonConvert.DeserializeObject<T>(textDecrypted);
