@@ -27,13 +27,17 @@ namespace Rain_save_manager.Core
             OtherWindows updateSave = new OtherWindows(Enums.OWT.ReplaceSave, "Actualizar partida");
 
             bool? resultado = updateSave.ShowDialog();
-            if (resultado == true)
-            {
-                string file = "sav-" + id;
-                string filereference = ((int)updateSave.save).ToString();
-                File.Copy(Path.Combine(App.rainworldsaves, "sav" + (filereference == "1" ? "" : filereference)), Path.Combine(App.appsaves, file), true);
-                MessageBox.Show("Archivo actualizado", "informacion", MessageBoxButton.OK, MessageBoxImage.Information);
-            }
+            if (resultado == false)
+                return;
+
+            string filereference = ((int)updateSave.save).ToString();
+            string fileContent = File.ReadAllText(Path.Combine(App.rainworldsaves, "sav" + (filereference == "1" ? "" : filereference)));
+            LoadData.savesData[id].Content = fileContent;
+
+            SavesSystem.WriteSaveFile(LoadData.savesData[id]);
+
+            MessageBox.Show("Archivo actualizado", "informacion", MessageBoxButton.OK, MessageBoxImage.Information);
+
         }
         public void CambiarNombreSave(int id)
         {
@@ -70,6 +74,8 @@ namespace Rain_save_manager.Core
                 FileName = "sav-" + Id + ".rsm",
                 Content = File.ReadAllText(Path.Combine(App.rainworldsaves, "sav" + (((int)save) == 1 ? "" : ((int)save).ToString())))
             };
+
+            SavesSystem.WriteSaveFile(savee);
 
             LoadData.savesData.Add(Id, savee);
             return new KeyValuePair<int, SaveData>(Id, savee);

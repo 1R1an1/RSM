@@ -32,5 +32,7 @@ namespace Rain_save_manager.Core
             foreach (var item in data.Values)
                 FilesSystem.WriteFile(Enums.RSMD.Saves, item.FileName, item);
         }
+
+        public static void WriteSaveFile(SaveData data) => FilesSystem.WriteFile(Enums.RSMD.Saves, data.FileName, data);
     }
 }
