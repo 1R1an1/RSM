@@ -45,11 +45,12 @@ namespace Rain_save_manager.Core
             renameSave.CDU_RENS.txtDato.Text = LoadData.savesData[id].VisualName;
 
             bool? resultado = renameSave.ShowDialog();
-            if (resultado == true)
-            {
-                SaveData save = LoadData.savesData[id];
-                save.VisualName = (renameSave.texto.Trim().Length == 0 ? "partida-" + id : renameSave.texto);
-            }
+            if (resultado == false)
+                return;
+
+            SaveData save = LoadData.savesData[id];
+            save.VisualName = (renameSave.texto.Trim().Length == 0 ? "partida-" + id : renameSave.texto);
+            SavesSystem.WriteSaveFile(LoadData.savesData[id]);
         }
         public void EliminarSave(int id)
         {
