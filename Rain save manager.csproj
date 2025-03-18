@@ -68,8 +68,8 @@
     <Compile Include="Core\RWreadSaves.cs" />
     <Compile Include="Core\SaveManager.cs" />
     <Compile Include="Core\SaveManagerUI.cs" />
-    <Compile Include="Core\SavesDataLogic.cs" />
     <Compile Include="Model\Enums.cs" />
+    <Compile Include="Model\IConfigData.cs" />
     <Compile Include="Model\RWsaveData.cs" />
     <Compile Include="Model\SaveData.cs" />
     <Compile Include="Core\ConfigSystem.cs" />

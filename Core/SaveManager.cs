@@ -2,6 +2,7 @@
 using Rain_save_manager.Windows;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Windows;
 
 namespace Rain_save_manager.Core
@@ -37,45 +38,43 @@ namespace Rain_save_manager.Core
         public void CambiarNombreSave(int id)
         {
             OtherWindows renameSave = new OtherWindows(Enums.OWT.RenemeSaves);
-            renameSave.CDU_RENS.txtDato.Text = LoadData.savesData.Saves[id].saveName;
+            renameSave.CDU_RENS.txtDato.Text = LoadData.savesData[id].saveName;
 
             bool? resultado = renameSave.ShowDialog();
             if (resultado == true)
             {
-                SaveData save = SavesDataLogic.FindSaveDataForId(id);
+                SaveData save = LoadData.savesData[id];
                 save.saveName = (renameSave.texto.Trim().Length == 0 ? "partida-" + id : renameSave.texto);
             }
         }
         public void EliminarSave(int id)
         {
-            File.Delete(Path.Combine(App.appsaves, LoadData.savesData.Saves[id].saveFileName));
-            LoadData.savesData.Saves.Remove(id);
+            File.Delete(Path.Combine(App.appsaves, LoadData.savesData[id].saveFileName));
+            LoadData.savesData.Remove(id);
         }
         public KeyValuePair<int, SaveData> CopiarSave(Enums.Save save)
         {
             OtherWindows window = new OtherWindows(Enums.OWT.RenemeSaves, "Nombre de partida");
             bool? result = window.ShowDialog();
 
-            if (result == true)
+            if (result == false)
+                return new KeyValuePair<int, SaveData>();
+
+            Dictionary<int, SaveData>.KeyCollection keys = LoadData.savesData.Keys;
+            int Id = (keys.Max() == 0 ? -1 : keys.Max()) + 1;
+
+            SaveData savee = new SaveData()
             {
-                int maxId = SavesDataLogic.GetMaxIdInSaves();
-                int Id = maxId + 1;
+                saveId = Id,
+                saveName = (window.texto.Trim().Length == 0 ? "partida-" + Id : window.texto),
+                saveFileName = "sav-" + Id + ".rsm",
+                saveContent = File.ReadAllText(Path.Combine(App.rainworldsaves, "sav" + (((int)save) == 1 ? "" : ((int)save).ToString())))
+            };
 
-                SavesSystem.CopySaveFile("sav" + (((int)save).ToString() == "1" ? "" : ((int)save).ToString()), $"sav-{Id}", out bool Replace);
-                if (Replace)
-                {
-                    bool resudlt = msbRemplazarArchivo();
-                    if (!resudlt)
-                        return new KeyValuePair<int, SaveData>();
-                    SavesSystem.CopySaveFile("sav" + (((int)save).ToString() == "1" ? "" : ((int)save).ToString()), $"sav-{Id}", true);
-                }
-
-                SaveData savee = new SaveData((window.texto.Trim().Length == 0 ? "partida-" + Id : window.texto), "sav-" + Id);
-                LoadData.savesData.Saves.Add(Id, savee);
-                return new KeyValuePair<int, SaveData>(Id, savee);
-            }
-            return new KeyValuePair<int, SaveData>();
+            LoadData.savesData.Add(Id, savee);
+            return new KeyValuePair<int, SaveData>(Id, savee);
         }
+        
         public bool EliminarSaves()
         {
             if (MessageBox.Show("¡Cambios irreversibles! \n ¿Continuar?", "ADVERTENCIA", MessageBoxButton.YesNo, MessageBoxImage.Warning) == MessageBoxResult.No)
@@ -83,12 +82,12 @@ namespace Rain_save_manager.Core
             Directory.Delete(App.appsaves, true);
             Directory.CreateDirectory(App.appsaves);
 
-            LoadData.savesData = new SavesData();
+            LoadData.savesData = new Dictionary<int, SaveData>();
             return true;
         }
         public void VerInfoSave(int id)
         {
-            Dictionary<Enums.RainWorldCharacter, RWsaveData> saveData = RWreadSaves.ReadSaveData(Path.Combine(App.appsaves, LoadData.savesData.Saves[id].saveFileName), true);
+            Dictionary<Enums.RainWorldCharacter, RWsaveData> saveData = RWreadSaves.ReadSaveData(LoadData.savesData[id].saveContent, false);
             InfoWindow infoWindow = new InfoWindow();
             List<string> text = new List<string>();
             int u = 0;

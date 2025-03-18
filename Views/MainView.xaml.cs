@@ -30,7 +30,7 @@ namespace Rain_save_manager.Views
         private void btn_deletallsaves_Click(object sender, RoutedEventArgs e)
         {
             List<int> keysToRemove = new List<int>();
-            foreach (KeyValuePair<int, SaveData> item in LoadData.savesData.Saves)
+            foreach (KeyValuePair<int, SaveData> item in LoadData.savesData)
             {
                 keysToRemove.Add(item.Key);
             }
