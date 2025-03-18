@@ -31,11 +31,11 @@ namespace Rain_save_manager.Core
 
         public static void WriteFile(Enums.RSMD directory, string file, object obj)
         {
-            string filepath = Path.Combine(App.appRSM, directory.ToString(), file + ".rsm");
+            string filepath = Path.Combine(App.appRSM, directory.ToString(), file);
 #if DEBUG      
             string filepath1 = Path.Combine(App.appRSM, directory.ToString(), file + "2.json");
 #endif
-
+            
             var json = JsonConvert.SerializeObject(obj, Formatting.Indented);
             string jsonEncrypted = AES256.Encrypt(json, CryptoUtils.defaultPassword);
 
