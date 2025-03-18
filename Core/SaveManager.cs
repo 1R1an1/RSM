@@ -60,8 +60,8 @@ namespace Rain_save_manager.Core
             if (result == false)
                 return new KeyValuePair<int, SaveData>();
 
-            Dictionary<int, SaveData>.KeyCollection keys = LoadData.savesData.Keys;
-            int Id = (keys.Max() == 0 ? -1 : keys.Max()) + 1;
+            Dictionary<int, SaveData> keys = LoadData.savesData;
+            int Id = (keys.Count == 0 ? -1 : keys.Keys.Max()) + 1;
 
             SaveData savee = new SaveData()
             {
