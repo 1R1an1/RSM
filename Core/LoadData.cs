@@ -1,7 +1,8 @@
 ﻿using Rain_save_manager.Model;
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
+//using System.Linq;
+using static Rain_save_manager.Core.SavesSystem;
 
 namespace Rain_save_manager.Core
 {
@@ -12,15 +13,16 @@ namespace Rain_save_manager.Core
 
         public static void Start()
         {
+            savesData = new Dictionary<int, SaveData>();
             if (Directory.GetFiles(App.appsaves).Length != 0)
-            {
-                foreach (var item in Directory.GetFiles(App.appsaves))
-                {
-                    string fileContent = File.ReadAllText(item);
-                    SaveData data = FilesSystem.ReadFile<SaveData>(Enums.RSMD.Saves, item.Split('\\').Last());
-                    savesData.Add(data.saveId, data);
-                }
-            }
+                ReadSavesFiles(savesData);
+            
+                //foreach (var item in Directory.GetFiles(App.appsaves))
+                //{
+                //    SaveData data = FilesSystem.ReadFile<SaveData>(Enums.RSMD.Saves, item.Split('\\').Last());
+                //    savesData.Add(data.saveId, data);
+                //}
+            
 
             //ComprobarData<SaveData>(out var result);
             //savesData = result;
@@ -29,8 +31,9 @@ namespace Rain_save_manager.Core
         }
         public static void Close()
         {
-            foreach (var item in savesData.Values)
-                ConfigSystem.WriteConfigFile(Path.Combine(App.appsaves, item.saveFileName), item);
+            WriteSavesFile(savesData);
+            //foreach (var item in savesData.Values)
+            //    ConfigSystem.WriteConfigFile(Path.Combine(App.appsaves, item.saveFileName), item);
         }
 
         //private static void ComprobarData<T>(out T result) where T : new()
