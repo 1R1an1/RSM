@@ -14,13 +14,13 @@ namespace Rain_save_manager.Core
             OtherWindows replaceSave = new OtherWindows(Enums.OWT.ReplaceSave);
 
             bool? resultado = replaceSave.ShowDialog();
-            if (resultado == true)
-            {
-                string file = "sav-" + id;
-                string filedest = ((int)replaceSave.save).ToString();
-                File.Copy(Path.Combine(App.appsaves, file), Path.Combine(App.rainworldsaves, "sav" + (filedest == "1" ? "" : filedest)), true);
-                MessageBox.Show("Archivo utilizado en la ranura: " + filedest, "informacion", MessageBoxButton.OK, MessageBoxImage.Information);
-            }
+            if (resultado == false)
+                return;
+
+            string filedest = ((int)replaceSave.save).ToString();
+            File.WriteAllText(Path.Combine(App.rainworldsaves, "sav" + (filedest == "1" ? "" : filedest)), LoadData.savesData[id].Content);
+            MessageBox.Show("Archivo utilizado en la ranura: " + filedest, "informacion", MessageBoxButton.OK, MessageBoxImage.Information);
+
         }
         public void ActualizarSave(int id)
         {
@@ -55,6 +55,7 @@ namespace Rain_save_manager.Core
         public void EliminarSave(int id)
         {
             File.Delete(Path.Combine(App.appsaves, LoadData.savesData[id].FileName));
+            File.Delete(Path.Combine(App.appsaves, LoadData.savesData[id].FileName + "2.json"));
             LoadData.savesData.Remove(id);
         }
         public KeyValuePair<int, SaveData> CopiarSave(Enums.Save save)
@@ -106,7 +107,7 @@ namespace Rain_save_manager.Core
                          $"\nKarma Actual: {item.Value.KarmaLevel}" +
                          $"\nKarma maximo: {item.Value.KarmaCap}" +
                          $"\nFlor de karma: {(item.Value.ReinforcedKarma == false ? "desactivado" : "activado")}" +
-                         $"\nTiempo jugado en partida: {(item.Value.TotalTime / 3600):D2}:{((item.Value.TotalTime % 3600) / 60):D2}:{(item.Value.TotalTime % 60):D2}" +
+                         $"\nTiempo jugado en partida: {(item.Value.TotalTime / 3600):D3}:{((item.Value.TotalTime % 3600) / 60):D2}:{(item.Value.TotalTime % 60):D2}" +
                          $"\nNumero de muertes: {item.Value.Deaths}" +
                          $"{(u < saveData.Count ? "\n\n" : "")}");
             }
