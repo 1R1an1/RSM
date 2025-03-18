@@ -7,20 +7,6 @@ namespace Rain_save_manager.Core
 {
     public static class SavesSystem
     {
-        //public static void CopySaveFile(string path, string filename, bool replace, out bool Replace)
-        //{
-        //    try
-        //    {
-        //        File.Copy(path + "\\" + filename, App.appsaves + $@"\{filename}");
-        //        Replace = false;
-        //    }
-        //    catch
-        //    {
-        //        Replace = true;
-        //        File.Copy(path + "\\" + filename, App.appsaves + $@"\{filename}", replace);
-        //    }
-        //}
-
         public static void CopySaveFile(string filename, string destfilename, out bool Replace)
         {
             try
@@ -38,13 +24,13 @@ namespace Rain_save_manager.Core
                 if (item.EndsWith("2.json"))
                     continue;
                 SaveData save = FilesSystem.ReadFile<SaveData>(Enums.RSMD.Saves, item.Split('\\').Last());
-                data.Add(save.saveId, save);
+                data.Add(save.Id, save);
             }
         }
         public static void WriteSavesFile(Dictionary<int, SaveData> data)
         {
             foreach (var item in data.Values)
-                FilesSystem.WriteFile(Enums.RSMD.Saves, item.saveFileName, item);
+                FilesSystem.WriteFile(Enums.RSMD.Saves, item.FileName, item);
         }
     }
 }

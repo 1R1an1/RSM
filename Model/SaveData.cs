@@ -1,27 +1,20 @@
-﻿using Newtonsoft.Json;
-
-namespace Rain_save_manager.Model
+﻿namespace Rain_save_manager.Model
 {
-    public class SaveData
+    public class SaveData : IFileData
     {
-        [JsonProperty("Id")]
-        public int saveId;
+        public int Id { get; set; }
+        public string VisualName { get; set; } = string.Empty;
+        public string FileName { get; set; } = string.Empty;
+        public string Content { get; set; } = string.Empty;
 
-        [JsonProperty("FileName")]
-        public string saveFileName = string.Empty;
+        //public IFileData TypeFileData { get; set; }
 
-        [JsonProperty("Name")]
-        public string saveName = string.Empty;
-
-        [JsonProperty("Content")]
-        public string saveContent = string.Empty;
-
-        public SaveData(string saveName, int saveId, string saveContent, string saveFileName)
+        public SaveData(string VisualName, int Id, string Content, string FileName)
         {
-            this.saveName = saveName;
-            this.saveId = saveId;
-            this.saveContent = saveContent;
-            this.saveFileName = saveFileName;
+            this.Id = Id;
+            this.VisualName = VisualName;
+            this.FileName = FileName;
+            this.Content = Content;
         }
         public SaveData() { }
     }

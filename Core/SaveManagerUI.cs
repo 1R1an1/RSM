@@ -65,7 +65,7 @@ namespace Rain_save_manager.Core
             {
                 Name = $"id_{save.Key}",
                 Style = (Style)App.Current.FindResource("RadioButtonStyle"),
-                Content = save.Value.saveName,
+                Content = save.Value.VisualName,
                 VerticalContentAlignment = VerticalAlignment.Center,
                 Padding = new Thickness(5.5),
                 MaxWidth = 290.5,
@@ -95,7 +95,7 @@ namespace Rain_save_manager.Core
 
         public void ActualizarRadioButton(int id)
         {
-            _RB_Saves[id].Content = LoadData.savesData[id].saveName;
+            _RB_Saves[id].Content = LoadData.savesData[id].VisualName;
         }
         public void EliminarRadioButton(int id)
         {

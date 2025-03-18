@@ -38,18 +38,18 @@ namespace Rain_save_manager.Core
         public void CambiarNombreSave(int id)
         {
             OtherWindows renameSave = new OtherWindows(Enums.OWT.RenemeSaves);
-            renameSave.CDU_RENS.txtDato.Text = LoadData.savesData[id].saveName;
+            renameSave.CDU_RENS.txtDato.Text = LoadData.savesData[id].VisualName;
 
             bool? resultado = renameSave.ShowDialog();
             if (resultado == true)
             {
                 SaveData save = LoadData.savesData[id];
-                save.saveName = (renameSave.texto.Trim().Length == 0 ? "partida-" + id : renameSave.texto);
+                save.VisualName = (renameSave.texto.Trim().Length == 0 ? "partida-" + id : renameSave.texto);
             }
         }
         public void EliminarSave(int id)
         {
-            File.Delete(Path.Combine(App.appsaves, LoadData.savesData[id].saveFileName));
+            File.Delete(Path.Combine(App.appsaves, LoadData.savesData[id].FileName));
             LoadData.savesData.Remove(id);
         }
         public KeyValuePair<int, SaveData> CopiarSave(Enums.Save save)
@@ -65,10 +65,10 @@ namespace Rain_save_manager.Core
 
             SaveData savee = new SaveData()
             {
-                saveId = Id,
-                saveName = (window.texto.Trim().Length == 0 ? "partida-" + Id : window.texto),
-                saveFileName = "sav-" + Id + ".rsm",
-                saveContent = File.ReadAllText(Path.Combine(App.rainworldsaves, "sav" + (((int)save) == 1 ? "" : ((int)save).ToString())))
+                Id = Id,
+                VisualName = (window.texto.Trim().Length == 0 ? "partida-" + Id : window.texto),
+                FileName = "sav-" + Id + ".rsm",
+                Content = File.ReadAllText(Path.Combine(App.rainworldsaves, "sav" + (((int)save) == 1 ? "" : ((int)save).ToString())))
             };
 
             LoadData.savesData.Add(Id, savee);
@@ -87,7 +87,7 @@ namespace Rain_save_manager.Core
         }
         public void VerInfoSave(int id)
         {
-            Dictionary<Enums.RainWorldCharacter, RWsaveData> saveData = RWreadSaves.ReadSaveData(LoadData.savesData[id].saveContent, false);
+            Dictionary<Enums.RainWorldCharacter, RWsaveData> saveData = RWreadSaves.ReadSaveData(LoadData.savesData[id].Content, false);
             InfoWindow infoWindow = new InfoWindow();
             List<string> text = new List<string>();
             int u = 0;
@@ -99,7 +99,6 @@ namespace Rain_save_manager.Core
                          $"\nKarma Actual: {item.Value.KarmaLevel}" +
                          $"\nKarma maximo: {item.Value.KarmaCap}" +
                          $"\nFlor de karma: {(item.Value.ReinforcedKarma == false ? "desactivado" : "activado")}" +
-                         //$"\nTiempo jugado en partida: {TimeSpan.FromSeconds(item.Value.TotalTime).Hours}:{TimeSpan.FromSeconds(item.Value.TotalTime).Minutes}:{TimeSpan.FromSeconds(item.Value.TotalTime).Seconds}" +
                          $"\nTiempo jugado en partida: {(item.Value.TotalTime / 3600):D2}:{((item.Value.TotalTime % 3600) / 60):D2}:{(item.Value.TotalTime % 60):D2}" +
                          $"\nNumero de muertes: {item.Value.Deaths}" +
                          $"{(u < saveData.Count ? "\n\n" : "")}");
