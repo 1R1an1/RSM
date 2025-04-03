@@ -2,6 +2,7 @@
 using Rain_save_manager.Windows;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Windows;
 
 namespace Rain_save_manager.Core
@@ -13,69 +14,75 @@ namespace Rain_save_manager.Core
             OtherWindows replaceSave = new OtherWindows(Enums.OWT.ReplaceSave);
 
             bool? resultado = replaceSave.ShowDialog();
-            if (resultado == true)
-            {
-                string file = "sav-" + id;
-                string filedest = ((int)replaceSave.save).ToString();
-                File.Copy(Path.Combine(App.appsaves, file), Path.Combine(App.rainworldsaves, "sav" + (filedest == "1" ? "" : filedest)), true);
-                MessageBox.Show("Archivo utilizado en la ranura: " + filedest, "informacion", MessageBoxButton.OK, MessageBoxImage.Information);
-            }
+            if (resultado == false)
+                return;
+
+            string filedest = ((int)replaceSave.save).ToString();
+            File.WriteAllText(Path.Combine(App.rainworldsaves, "sav" + (filedest == "1" ? "" : filedest)), LoadData.savesData[id].Content);
+            MessageBox.Show("Archivo utilizado en la ranura: " + filedest, "informacion", MessageBoxButton.OK, MessageBoxImage.Information);
+
         }
         public void ActualizarSave(int id)
         {
             OtherWindows updateSave = new OtherWindows(Enums.OWT.ReplaceSave, "Actualizar partida");
 
             bool? resultado = updateSave.ShowDialog();
-            if (resultado == true)
-            {
-                string file = "sav-" + id;
-                string filereference = ((int)updateSave.save).ToString();
-                File.Copy(Path.Combine(App.rainworldsaves, "sav" + (filereference == "1" ? "" : filereference)), Path.Combine(App.appsaves, file), true);
-                MessageBox.Show("Archivo actualizado", "informacion", MessageBoxButton.OK, MessageBoxImage.Information);
-            }
+            if (resultado == false)
+                return;
+
+            string filereference = ((int)updateSave.save).ToString();
+            string fileContent = File.ReadAllText(Path.Combine(App.rainworldsaves, "sav" + (filereference == "1" ? "" : filereference)));
+            LoadData.savesData[id].Content = fileContent;
+
+            SavesSystem.WriteSaveFile(LoadData.savesData[id]);
+
+            MessageBox.Show("Archivo actualizado", "informacion", MessageBoxButton.OK, MessageBoxImage.Information);
+
         }
         public void CambiarNombreSave(int id)
         {
             OtherWindows renameSave = new OtherWindows(Enums.OWT.RenemeSaves);
-            renameSave.CDU_RENS.txtDato.Text = LoadData.savesData.Saves[id].saveName;
+            renameSave.CDU_RENS.txtDato.Text = LoadData.savesData[id].VisualName;
 
             bool? resultado = renameSave.ShowDialog();
-            if (resultado == true)
-            {
-                SaveData save = SavesDataLogic.FindSaveDataForId(id);
-                save.saveName = (renameSave.texto.Trim().Length == 0 ? "partida-" + id : renameSave.texto);
-            }
+            if (resultado == false)
+                return;
+
+            SaveData save = LoadData.savesData[id];
+            save.VisualName = (renameSave.texto.Trim().Length == 0 ? "partida-" + id : renameSave.texto);
+            SavesSystem.WriteSaveFile(LoadData.savesData[id]);
         }
         public void EliminarSave(int id)
         {
-            File.Delete(Path.Combine(App.appsaves, LoadData.savesData.Saves[id].saveFileName));
-            LoadData.savesData.Saves.Remove(id);
+            File.Delete(Path.Combine(App.appsaves, LoadData.savesData[id].FileName));
+            File.Delete(Path.Combine(App.appsaves, LoadData.savesData[id].FileName + "2.json"));
+            LoadData.savesData.Remove(id);
         }
         public KeyValuePair<int, SaveData> CopiarSave(Enums.Save save)
         {
             OtherWindows window = new OtherWindows(Enums.OWT.RenemeSaves, "Nombre de partida");
             bool? result = window.ShowDialog();
 
-            if (result == true)
+            if (result == false)
+                return new KeyValuePair<int, SaveData>();
+
+            Dictionary<int, SaveData> keys = LoadData.savesData;
+            int Id = (keys.Count == 0 ? -1 : keys.Keys.Max()) + 1;
+
+            SaveData savee = new SaveData()
             {
-                int maxId = SavesDataLogic.GetMaxIdInSaves();
-                int Id = maxId + 1;
+                Id = Id,
+                VisualName = (window.texto.Trim().Length == 0 ? "partida-" + Id : window.texto),
+                FileName = "sav-" + Id + ".rsm",
+                Content = File.ReadAllText(Path.Combine(App.rainworldsaves, "sav" + (((int)save) == 1 ? "" : ((int)save).ToString())))
+            };
 
-                SavesSystem.CopySaveFile("sav" + (((int)save).ToString() == "1" ? "" : ((int)save).ToString()), $"sav-{Id}", out bool Replace);
-                if (Replace)
-                {
-                    bool resudlt = msbRemplazarArchivo();
-                    if (!resudlt)
-                        return new KeyValuePair<int, SaveData>();
-                    SavesSystem.CopySaveFile("sav" + (((int)save).ToString() == "1" ? "" : ((int)save).ToString()), $"sav-{Id}", true);
-                }
+            SavesSystem.WriteSaveFile(savee);
 
-                SaveData savee = new SaveData((window.texto.Trim().Length == 0 ? "partida-" + Id : window.texto), "sav-" + Id);
-                LoadData.savesData.Saves.Add(Id, savee);
-                return new KeyValuePair<int, SaveData>(Id, savee);
-            }
-            return new KeyValuePair<int, SaveData>();
+            LoadData.savesData.Add(Id, savee);
+            return new KeyValuePair<int, SaveData>(Id, savee);
         }
+        
         public bool EliminarSaves()
         {
             if (MessageBox.Show("¡Cambios irreversibles! \n ¿Continuar?", "ADVERTENCIA", MessageBoxButton.YesNo, MessageBoxImage.Warning) == MessageBoxResult.No)
@@ -83,12 +90,12 @@ namespace Rain_save_manager.Core
             Directory.Delete(App.appsaves, true);
             Directory.CreateDirectory(App.appsaves);
 
-            LoadData.savesData = new SavesData();
+            LoadData.savesData = new Dictionary<int, SaveData>();
             return true;
         }
         public void VerInfoSave(int id)
         {
-            Dictionary<Enums.RainWorldCharacter, RWsaveData> saveData = RWreadSaves.ReadSaveData(Path.Combine(App.appsaves, LoadData.savesData.Saves[id].saveFileName), true);
+            Dictionary<Enums.RainWorldCharacter, RWsaveData> saveData = RWreadSaves.ReadSaveData(LoadData.savesData[id].Content, false);
             InfoWindow infoWindow = new InfoWindow();
             List<string> text = new List<string>();
             int u = 0;
@@ -100,8 +107,7 @@ namespace Rain_save_manager.Core
                          $"\nKarma Actual: {item.Value.KarmaLevel}" +
                          $"\nKarma maximo: {item.Value.KarmaCap}" +
                          $"\nFlor de karma: {(item.Value.ReinforcedKarma == false ? "desactivado" : "activado")}" +
-                         //$"\nTiempo jugado en partida: {TimeSpan.FromSeconds(item.Value.TotalTime).Hours}:{TimeSpan.FromSeconds(item.Value.TotalTime).Minutes}:{TimeSpan.FromSeconds(item.Value.TotalTime).Seconds}" +
-                         $"\nTiempo jugado en partida: {(item.Value.TotalTime / 3600):D2}:{((item.Value.TotalTime % 3600) / 60):D2}:{(item.Value.TotalTime % 60):D2}" +
+                         $"\nTiempo jugado en partida: {(item.Value.TotalTime / 3600):D3}:{((item.Value.TotalTime % 3600) / 60):D2}:{(item.Value.TotalTime % 60):D2}" +
                          $"\nNumero de muertes: {item.Value.Deaths}" +
                          $"{(u < saveData.Count ? "\n\n" : "")}");
             }

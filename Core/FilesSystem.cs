@@ -9,7 +9,7 @@ namespace Rain_save_manager.Core
     {
 
 
-        public static T ReadFile<T>(Enums.RSMD directory) where T : ConfigBehaviour
+        public static T ReadFile<T>(Enums.RSMD directory)
         {
             string filepath = Path.Combine(App.appRSM, directory.ToString(), $"{typeof(T).Name}.rsm");
             string text = File.ReadAllText(filepath);
@@ -19,13 +19,23 @@ namespace Rain_save_manager.Core
             return result;
         }
 
+        public static T ReadFile<T>(Enums.RSMD directory, string fileName)
+        {
+            string filepath = Path.Combine(App.appRSM, directory.ToString(), fileName);
+            string text = File.ReadAllText(filepath);
+            string textDecrypted = AES256.Decrypt(text, CryptoUtils.defaultPassword);
+            var result = JsonConvert.DeserializeObject<T>(textDecrypted);
+
+            return result;
+        }
+
         public static void WriteFile(Enums.RSMD directory, string file, object obj)
         {
-            string filepath = Path.Combine(App.appRSM, directory.ToString(), file + ".rsm");
+            string filepath = Path.Combine(App.appRSM, directory.ToString(), file);
 #if DEBUG      
             string filepath1 = Path.Combine(App.appRSM, directory.ToString(), file + "2.json");
 #endif
-
+            
             var json = JsonConvert.SerializeObject(obj, Formatting.Indented);
             string jsonEncrypted = AES256.Encrypt(json, CryptoUtils.defaultPassword);
 

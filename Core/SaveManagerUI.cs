@@ -65,7 +65,7 @@ namespace Rain_save_manager.Core
             {
                 Name = $"id_{save.Key}",
                 Style = (Style)App.Current.FindResource("RadioButtonStyle"),
-                Content = save.Value.saveName,
+                Content = save.Value.VisualName,
                 VerticalContentAlignment = VerticalAlignment.Center,
                 Padding = new Thickness(5.5),
                 MaxWidth = 290.5,
@@ -84,7 +84,7 @@ namespace Rain_save_manager.Core
         public KeyValuePair<int, RadioButton> GetSelectedRadioButton() => _RB_Saves.FirstOrDefault(rb => rb.Value.IsChecked == true);
 
 
-        public void InitializeRadioButtonSaves() { foreach (KeyValuePair<int, SaveData> dictionary in LoadData.savesData.Saves) { AddRadioButton(new KeyValuePair<int, RadioButton>(dictionary.Key, CreateSaveRadioButton(dictionary))); } }
+        public void InitializeRadioButtonSaves() { foreach (KeyValuePair<int, SaveData> dictionary in LoadData.savesData) { AddRadioButton(new KeyValuePair<int, RadioButton>(dictionary.Key, CreateSaveRadioButton(dictionary))); } }
         public void AddRadioButton(KeyValuePair<int, RadioButton> rb)
         {
             _mainView.WP_saves.Children.Add(rb.Value);
@@ -95,7 +95,7 @@ namespace Rain_save_manager.Core
 
         public void ActualizarRadioButton(int id)
         {
-            _RB_Saves[id].Content = LoadData.savesData.Saves[id].saveName;
+            _RB_Saves[id].Content = LoadData.savesData[id].VisualName;
         }
         public void EliminarRadioButton(int id)
         {
