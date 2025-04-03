@@ -15,6 +15,7 @@
             Rivulet,
             Spear,
             Saint,
+            CowBoy,
             Inv,
             Vinki,
             Darkness,

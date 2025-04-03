@@ -19,6 +19,7 @@ namespace Rain_save_manager.Core
             { RainWorldCharacter.Rivulet, "Rivulet&lt;svA&gt;SEED&lt;svB&gt;" },
             { RainWorldCharacter.Spear, "Spear&lt;svA&gt;SEED&lt;svB&gt;" },
             { RainWorldCharacter.Saint, "Saint&lt;svA&gt;SEED&lt;svB&gt;" },
+            { RainWorldCharacter.CowBoy, "CowBoySLug&lt;svA&gt;SEED&lt;svB&gt;" },
             { RainWorldCharacter.Inv, "Inv&lt;svA&gt;SEED&lt;svB&gt;" },
             { RainWorldCharacter.Vinki, "Vinki&lt;svA&gt;SEED&lt;svB&gt;" },
             { RainWorldCharacter.Darkness, "Darkness&lt;svA&gt;SEED&lt;svB&gt;" },
@@ -112,6 +113,4 @@ namespace Rain_save_manager.Core
             return intValue;
         }
     }
-
-    // Toda la clase echa con gemini :) //
 }
